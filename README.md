@@ -18,6 +18,8 @@ Všechny adresy [v seznamu endpointů](endpoints.md) začínají lomítkem. Čá
 * Java wrapper pro API v3: https://github.com/PanJohnny/Baka4J
 * [Plochý rozvrh](https://github.com/Tomsanik/plochy-rozvrh) – snadno dostupný, přehledný a aktuální rozvrh jako součást tapety plochy.
 * Asynchronní API k Bakalářům [async-bakalari-api3](https://github.com/schizza/async-bakalari-api3) ([dokumentace](https://async-bakalari-api.schizza.cz))
+* [bakalari](https://github.com/stanekondrej/bakalari) - knihovna pro Bakaláře napsaná v Go
+* [baka-fallback](https://github.com/stanekondrej/baka-fallback) - fallback server, který v případě, že Bakaláři spadnou, udrží rozvrh
 
 ## Kam dál?
 
