@@ -12,6 +12,14 @@ POST /api/login
 Content-Type: application/x-www-form-urlencoded
 ```
 
+| Vlastnost | Hodnota |
+|-----------|---------|
+| Metoda    | `POST`  |
+
+| Hlavička       | Hodnota                             |
+|----------------|-------------------------------------|
+| `Content-Type` | `application/x-www-form-urlencoded` |
+
 ## První přihlášení
 
 Body: `client_id=ANDR&grant_type=password&username=USERNAME&password=PASSWORD`
@@ -30,15 +38,15 @@ délkou, která se od starších verzí API rapidně změnila._
 
 ```jsonc
 {
-   "bak:ApiVersion":"3.13.0",
-   "bak:AppVersion":"1.35.1029.1",
-   "bak:UserId":"XXXXX",
-   "access_token":"access_token",     // 2556 znaků
-   "refresh_token":"refresh_token",   // 3459 znaků
-   "id_token":"id_token - 872 znaků", // není vždy dostupné
-   "token_type":"Bearer",
-   "expires_in":3599, // v sekundách
-   "scope":"openid profile offline_access bakalari_api"
+   "bak:ApiVersion": "3.13.0",
+   "bak:AppVersion": "1.35.1029.1",
+   "bak:UserId": "XXXXX",
+   "access_token": "access_token",     // 2556 znaků
+   "refresh_token": "refresh_token",   // 3459 znaků
+   "id_token": "id_token - 872 znaků", // není vždy dostupné
+   "token_type": "Bearer",
+   "expires_in": 3599, // v sekundách
+   "scope": "openid profile offline_access bakalari_api"
 }
 ```
 
@@ -79,8 +87,8 @@ Body: `client_id=ANDR&grant_type=refresh_token&refresh_token=REFRESHTOKEN`
 | `refresh_token`  | `<refresh_token>` |
 
 Vrací stejnou strukturu body jako při prvním přihlášení. Zdá se, že i refresh
-token asi po měsíci bez obnovy vyprší a je nutné nové přihlášení pomocí loginu a
-hesla
+token asi po měsíci bez obnovy vyprší a je nutné nové přihlášení pomocí
+uživatelského jména a hesla.
 
 ## Význam tokenů
 
