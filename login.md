@@ -177,13 +177,17 @@ Při chybě endpoint vždy odpovídá s `400 Bad Request`.
 
 ### Použitý `refresh_token`
 
-_Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden
+<details>
+    <summary>Poznámka k současné chybě v API</summary>
+
+Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden
 `refresh_token` jde použít vícekrát pro získání rozdílných validních párů
 tokenů. Tato **chybová odpověď se začne objevovat až po čtvrtém požadavku se
 stejným tokenem**. Tzn. jdou vygenerovat až 3 `access_token`y a 3
 `refresh_token`y z jednoho `refresh_token`u. K této duplikaci tokenů by ale
 běžně nemělo docházet, a proto ji prosím nepoužívejte (+není 100%
-zdokumentovaná) a **uchovávejte vždy pouze poslední pár tokenů.**_
+zdokumentovaná) a **uchovávejte vždy pouze poslední pár tokenů.**
+</details>
 
 ```json
 {
