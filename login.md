@@ -1,6 +1,6 @@
 # Login
 
-Slouží k získání a obnově tokenů pro přístup k API
+Slouží k získání a obnově tokenů pro přístup k API.
 
 ## Požadavek
 
@@ -53,12 +53,18 @@ Starší verze API odpovídá následovně:
 }
 ```
 
-Pro práci s dalšími endpointy je nezbytné používat tzv. access token pomocí
-hlavičky `Authorization: Bearer ACCESSTOKEN`
+Pro práci s dalšími endpointy je nezbytné používat `access_token` pomocí
+hlavičky `Authorization: Bearer <access_token>`
 
 ## Přihlášení pomocí refresh tokenu
 
 Body: `client_id=ANDR&grant_type=refresh_token&refresh_token=REFRESHTOKEN`
+
+| Parametr         | Hodnota           |
+|------------------|-------------------|
+| `client_id`      | `ANDR`            |
+| `grant_type`     | `refresh_token`   |
+| `refresh_token`  | `<refresh_token>` |
 
 Vrací stejnou strukturu body jako při prvním přihlášení. Zdá se, že i refresh
 token asi po měsíci bez obnovy vyprší a je nutné nové přihlášení pomocí loginu a
