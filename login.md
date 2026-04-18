@@ -76,7 +76,7 @@ délkou, která se od starších verzí API rapidně změnila._
 }
 ```
 
-## Přihlášení pomocí refresh tokenu
+## Přihlášení pomocí `refresh_token`u
 
 Body: `client_id=ANDR&grant_type=refresh_token&refresh_token=REFRESHTOKEN`
 
@@ -178,12 +178,12 @@ Při chybě endpoint vždy odpovídá s `400 Bad Request`.
 ### Použitý `refresh_token`
 
 _Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden
-refresh token jde použít vícekrát pro získání rozdílných validních párů tokenů.
-Tato chybová odpověď se začne objevovat až po čtvrtém requestu se stejným
-tokenem. Tzn. jdou vygenerovat až 3 access tokeny a 3 refresh tokeny z jednoho
-refresh tokenu. K této duplikaci tokenů by ale běžně nemělo docházet, a proto ji
-prosím nepoužívejte (+není 100% zdokumentovaná) a **uchovávejte vždy pouze
-poslední pár tokenů.**_
+`refresh_token` jde použít vícekrát pro získání rozdílných validních párů
+tokenů. Tato **chybová odpověď se začne objevovat až po čtvrtém požadavku se
+stejným tokenem**. Tzn. jdou vygenerovat až 3 `access_token`y a 3
+`refresh_token`y z jednoho `refresh_token`u. K této duplikaci tokenů by ale
+běžně nemělo docházet, a proto ji prosím nepoužívejte (+není 100%
+zdokumentovaná) a **uchovávejte vždy pouze poslední pár tokenů.**_
 
 ```json
 {
