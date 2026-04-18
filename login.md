@@ -1,6 +1,9 @@
 # Login
 
-Slouží k získání a obnově tokenů pro přístup k API.
+Slouží k získání a obnově tokenů pro přístup k API. Pro užívání ostatních
+endpointů API potřebuje klient `access_token`, který získá na tomto endpointu.
+Po přihlášení musí klient uvést `access_token` v hlavičce každého požadavku,
+jako `Authorization: Bearer <access_token>`.
 
 ## Požadavek
 
@@ -39,7 +42,19 @@ délkou, která se od starších verzí API rapidně změnila._
 }
 ```
 
-Starší verze API odpovídá následovně:
+| Pole             | Typ                           |
+|------------------|-------------------------------|
+| `bak:ApiVersion` | `string`                      |
+| `bak:AppVersion` | `string`                      |
+| `bak:UserId`     | `string`                      |
+| `access_token`   | `string`                      |
+| `refresh_token`  | `string`                      |
+| `id_token`       | `string?`                     |
+| `token_type`     | `string`                      |
+| `expires_in`     | `number` (v celých sekundách) |
+| `scope`          | `string`                      |
+
+### Starší verze API
 
 ```jsonc
 {
@@ -52,9 +67,6 @@ Starší verze API odpovídá následovně:
   "bak:UserId": "XXXXX"
 }
 ```
-
-Pro práci s dalšími endpointy je nezbytné používat `access_token` pomocí
-hlavičky `Authorization: Bearer <access_token>`
 
 ## Přihlášení pomocí refresh tokenu
 
@@ -73,9 +85,11 @@ hesla
 ## Význam tokenů
 
 Tokeny jsou něco jako [JWT](https://cs.wikipedia.org/wiki/JSON_Web_Token).
-Jednotlivé části jsou odděleny tečkami, ale s výjimkou hlavičky jsou
-pravděpodobně šifrované klíčem, který uchovává server ve svém úložišti, takže si
-je nepřečtete. Výjimkou je `id_token`, který šifrovaný není.
+Jednotlivé části jsou odděleny tečkami, ale s výjimkou hlavičky jsou šifrované
+klíčem, který uchovává server ve svém úložišti, takže si je nepřečtete (viz.
+políčko hlavičky `enc` - v příkladové odpovědi zde je tělo tokenu šifrováno
+pomocí blokové šifry AES-256 a jako hash funkci používá server HS512). Výjimkou
+je `id_token`, který šifrovaný není.
 
 Jelikož JWT jsou zakódovány pomocí base64 pro snadný přenos, zde jsou pro
 zajímavost příklady dekódovatelných částí tokenů:
