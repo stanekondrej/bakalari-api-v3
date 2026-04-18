@@ -1,95 +1,116 @@
 # Login
+
 Slouží k získání a obnově tokenů pro přístup k API
 
-
 ## Požadavek
+
 ```
 POST /api/login
 Content-Type: application/x-www-form-urlencoded
 ```
 
-
-
 ## První přihlášení
 
 Body: `client_id=ANDR&grant_type=password&username=USERNAME&password=PASSWORD`
 
-Výsledek requestu:
-*(Počty znaků jsou pouze orientační, aby někdo nebyl zaskočen jejich délkou, která se od starších verzí API rapidně změnila)*
+| Parametr     | Hodnota               |
+|--------------|-----------------------|
+| `client_id`  | `ANDR`                |
+| `grant_type` | `password`            |
+| `username`   | `<uživatelské jméno>` |
+| `password`   | `<heslo>`             |
 
-```json
+## Odpověď
+
+_Pozor: Počty znaků jsou pouze orientační, aby někdo nebyl zaskočen jejich
+délkou, která se od starších verzí API rapidně změnila._
+
+```jsonc
 {
    "bak:ApiVersion":"3.13.0",
    "bak:AppVersion":"1.35.1029.1",
    "bak:UserId":"XXXXX",
-   "access_token":"ACCESSTOKEN - 2556 znaků",
-   "refresh_token":"REFRESHTOKEN - 3459 znaků",
-   "id_token":"id_token - 872 znaků",  //není vždy dostupné
+   "access_token":"access_token",     // 2556 znaků
+   "refresh_token":"refresh_token",   // 3459 znaků
+   "id_token":"id_token - 872 znaků", // není vždy dostupné
    "token_type":"Bearer",
-   "expires_in":3599,
+   "expires_in":3599, // v sekundách
    "scope":"openid profile offline_access bakalari_api"
 }
-//starší verze API
+```
+
+Starší verze API odpovídá následovně:
+
+```jsonc
 {
-  "access_token": "ACCESSTOKEN",
+  "access_token": "access_token",
   "token_type": "bearer",
-  "expires_in": 599,
-  "refresh_token": "REFRESHTOKEN",
+  "expires_in": 599, // v sekundách
+  "refresh_token": "refresh_token",
   "bak:ApiVersion": "3.8.0",
   "bak:AppVersion": "1.28.306.4",
   "bak:UserId": "XXXXX"
 }
 ```
 
-Pro práci s dalšími endpointy je nezbytné používat tzv. access token pomocí hlavičky `Authorization: Bearer ACCESSTOKEN`
-
-
+Pro práci s dalšími endpointy je nezbytné používat tzv. access token pomocí
+hlavičky `Authorization: Bearer ACCESSTOKEN`
 
 ## Přihlášení pomocí refresh tokenu
+
 Body: `client_id=ANDR&grant_type=refresh_token&refresh_token=REFRESHTOKEN`
 
-Vrací stejnou strukturu body jako při prvním přihlášení.
-Zdá se, že i refresh token asi po měsíci bez obnovy vyprší a je nutné nové přihlášení pomocí loginu a hesla
-
-
+Vrací stejnou strukturu body jako při prvním přihlášení. Zdá se, že i refresh
+token asi po měsíci bez obnovy vyprší a je nutné nové přihlášení pomocí loginu a
+hesla
 
 ## Význam tokenů
 
-Tokeny jsou složeny z jednotlivých částí oddělených tečkami
+Tokeny jsou něco jako [JWT](https://cs.wikipedia.org/wiki/JSON_Web_Token).
+Jednotlivé části jsou odděleny tečkami, ale s výjimkou hlavičky jsou
+pravděpodobně šifrované klíčem, který uchovává server ve svém úložišti, takže si
+je nepřečtete. Výjimkou je `id_token`, který šifrovaný není.
 
+Jelikož JWT jsou zakódovány pomocí base64 pro snadný přenos, zde jsou pro
+zajímavost příklady dekódovatelných částí tokenů:
 
-první část ```ACCESS_TOKEN``` po dekódování pomocí Base64
-```json
+### Hlavička `access_token`
+
+```jsonc
 {
   "alg":"RSA-OAEP",
   "enc":"A256CBC-HS512",
   "kid":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  "typ":"at+jwt"
+  "typ":"at+jwt" // závěr se bude lišit podle konfigurace školního serveru, může
+                 // tady být i políčko "cty", atd.
 }
 ```
 
-první část ```REFRESH_TOKEN``` po dekódování pomocí Base64
-```json
+### Hlavička `refresh_token`
+
+```jsonc
 {
    "alg":"RSA-OAEP",
    "enc":"A256CBC-HS512",
    "kid":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-   "typ":"oi_reft+jwt"
+   "typ":"oi_reft+jwt" // opět, mohou zde být i další políčka
 }
 ```
 
-```ID token``` je zpracovaný podle ```JWT``` standardu
+### Dekódovaný `id_token`
 
-```json
-Header
+```jsonc
+// hlavička
 {
   "alg": "RS256",
   "kid": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "typ": "JWT",
   "x5t": "XXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
+```
 
-Body
+```jsonc
+// tělo
 {
   "sub": "XXXXXX",
   "oi_au_id": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
@@ -98,76 +119,75 @@ Body
   "at_hash": "XXXXXXXXXXXXXXXXXXXXXX",
   "oi_tkn_id": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "aud": "ANDR",
-  "exp": 1601454600, //platný 30 minut
+  "exp": 1601454600, // platný 30 minut
   "iss": "https://bakalari.skola.cz/",
   "iat": 1601452800
 }
 ```
 
-
-
 ## Chyby
 
-Vždy odpovídá s ```400 Bad Request```
+Při chybě endpoint vždy odpovídá s `400 Bad Request`.
 
-
-Pokus o přihlášení s nesprávnými údaji
-```json
-{
-  "error":"invalid_grant","error_description":"Špatný login nebo heslo"
-}
-```
-
-
-
-Bez validního ```refresh_token``` je odpovědí následující
-```json
-{
-  "error":"invalid_grant",
-  "error_description":"The specified token is invalid."
-}
-```
-
-
-
-Pro již použitý ```refresh_token``` vrací
-*(Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden refresh token jde použít vícekrát pro získání rozdílných validních párů tokenů. Tato chybová odpověď se začne objevovat až po čtvrtém requestu se stejným tokenem. Tzn. jdou vygenerovat až 3 access tokeny a 3 refresh tokeny z jednoho refresh tokenu. K této duplikaci tokenů by ale běžně nemělo docházet, a proto ji prosím nepoužívejte (+není 100% zdokumentovaná) a uchovávejte vždy poslední pár tokenů)*
+### Nesprávné přihlašovací údaje
 
 ```json
 {
-  "error":"invalid_grant",
-  "error_description":"The specified refresh token has already been redeemed."
+  "error": "invalid_grant",
+  "error_description": "Špatný login nebo heslo"
 }
 ```
 
+### Neplatný `refresh_token`
 
-
-Při nepoužití ```grant_type```
 ```json
 {
-  "error":"invalid_request","error_description":"The mandatory 'grant_type' parameter is missing."
+  "error": "invalid_grant",
+  "error_description": "The specified token is invalid."
 }
 ```
 
+### Použitý `refresh_token`
 
+_Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden
+refresh token jde použít vícekrát pro získání rozdílných validních párů tokenů.
+Tato chybová odpověď se začne objevovat až po čtvrtém requestu se stejným
+tokenem. Tzn. jdou vygenerovat až 3 access tokeny a 3 refresh tokeny z jednoho
+refresh tokenu. K této duplikaci tokenů by ale běžně nemělo docházet, a proto ji
+prosím nepoužívejte (+není 100% zdokumentovaná) a **uchovávejte vždy pouze
+poslední pár tokenů.**_
 
-Při nepoužití ```client_id```
 ```json
 {
-  "error":"invalid_client",
-  "error_description":"The mandatory 'client_id' parameter is missing."
+  "error": "invalid_grant",
+  "error_description": "The specified refresh token has already been redeemed."
 }
 ```
 
+### Chybějící `grant_type` v těle požadavku
 
+```json
+{
+  "error": "invalid_request",
+  "error_description": "The mandatory 'grant_type' parameter is missing."
+}
+```
 
-Na starší API bez ```client_id```, nebo ```grant_type``` dostaneme
+### Chybějící `client_id` v těle požadavku
+
+```json
+{
+  "error": "invalid_client",
+  "error_description": "The mandatory 'client_id' parameter is missing."
+}
+```
+
+### Odpověď starší API s chybějícím `client_id` či `grant_type`
+
 ```json
 {
   "error": "invalid_client",
   "error_description": "Unknown Client or invalid grant type."
 }
 ```
-
-
 
