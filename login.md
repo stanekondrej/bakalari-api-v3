@@ -12,14 +12,6 @@ POST /api/login
 Content-Type: application/x-www-form-urlencoded
 ```
 
-| Vlastnost | Hodnota |
-|-----------|---------|
-| Metoda    | `POST`  |
-
-| Hlavička       | Hodnota                             |
-|----------------|-------------------------------------|
-| `Content-Type` | `application/x-www-form-urlencoded` |
-
 ## První přihlášení
 
 Body: `client_id=ANDR&grant_type=password&username=USERNAME&password=PASSWORD`
@@ -98,6 +90,8 @@ klíčem, který uchovává server ve svém úložišti, takže si je nepřečte
 políčko hlavičky `enc` - v příkladové odpovědi zde je tělo tokenu šifrováno
 pomocí blokové šifry AES-256 a jako hash funkci používá server HS512). Výjimkou
 je `id_token`, který šifrovaný není.
+
+--------------------------------------------------------------------------------
 
 Jelikož JWT jsou zakódovány pomocí base64 pro snadný přenos, zde jsou pro
 zajímavost příklady dekódovatelných částí tokenů:
