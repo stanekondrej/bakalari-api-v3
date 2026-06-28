@@ -7,14 +7,14 @@ Toto téma bylo diskutováno v
 
 ### Požadavek
 
-```
+```http
 GET https://sluzby.bakalari.cz/api/v1/municipality
 Accept: application/json
 ```
 
 ### Odpověď
 
-````````
+```jsonc
 [
   {
     "name": "",
@@ -28,13 +28,13 @@ Accept: application/json
     "name": "Aš",
     "schoolCount": 3
   },
-  ...
+  // ...
 ]
-````````
+```
 
-bez `Accept: application/json` vrací stejná data, jen ve XML struktuře
+Bez `Accept: application/json` vrací stejná data, jen v XML struktuře.
 
-``````
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfmunicipalityInfo xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
    <municipalityInfo>
@@ -49,29 +49,28 @@ bez `Accept: application/json` vrací stejná data, jen ve XML struktuře
       <name>Aš</name>
       <schoolCount>3</schoolCount>
    </municipalityInfo>
-   ...
+   <!-- ... -->
 </ArrayOfmunicipalityInfo>
-``````
+```
 
 ## Seznam škol
 
 ### Požadavek
 
-```
+```http
 GET https://sluzby.bakalari.cz/api/v1/municipality/$mesto
 Accept: application/json
 ```
 
-Parametr `mesto` musí být správně URL encoded, například Benešov u Prahy
-→ Bene%C5%A1ov%20u%20Prahy
+Parametr `mesto` musí být správně URL encoded, například Benešov u Prahy by byl
+`Bene%C5%A1ov%20u%20Prahy`
 
 U měst s tečkou ve jméně (*např.: Ostrava-Mar.Hory*) server vrací `404`,
-pro platnou odpověď je nutno použít pouze část před tečkou
-(*Ostrava-Mar*)
+pro platnou odpověď je nutno použít pouze část před tečkou (*Ostrava-Mar*)
 
 ### Odpověď
 
-````````
+```jsonc
 {
   "name": "beroun",
   "schools": [
@@ -90,14 +89,14 @@ pro platnou odpověď je nutno použít pouze část před tečkou
       "name": "Manažerská akademie, soukromá střední škola",
       "schoolUrl": "https://maberoun.bakalari.cz/"
     },
-    ...
+    // ...
   ]
 }
-````````
+```
 
-bez `Accept: application/json` vrací stejná data, jen ve XML struktuře
+Bez hlavičky `Accept: application/json` vrací stejná data, jen v XML struktuře.
 
-``````
+```xml
 <municipality
   xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
   <name>beroun</name>
@@ -117,7 +116,8 @@ bez `Accept: application/json` vrací stejná data, jen ve XML struktuře
       <name>Manažerská akademie, soukromá střední škola</name>
       <schoolUrl>https://maberoun.bakalari.cz/</schoolUrl>
     </schoolInfo>
-    ... 
+    <!-- ... -->
   </schools>
 </municipality> 
-``````
+```
+

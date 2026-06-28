@@ -1,39 +1,44 @@
 # Události
 
-## Požadavek
+## Všechny události
 
-Všechny události:
+### Požadavek
 
-```
+```http
 GET /api/3/events (?from=YYYY-MM-dd)
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
 
-Pouze události uživatele:
+## Události uživatele
 
-```
+### Požadavek
+
+```http
 GET /api/3/events/my (?from=YYYY-MM-dd)
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
 
-Veřejné události:
+## Veřejné události:
 
-```
+### Požadavek
+
+```http
 GET /api/3/events/public (?from=YYYY-MM-dd)
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
 
-## Odpověď
+### Odpověď
 
-S `from` vrací události od tohoto data Bez `from` vrací události z celého
-školního roku
+S query parametrem `from` vrací události od tohoto data. Bez `from` vrací
+události z celého školního roku.
 
-````````````
+<details>
+    <summary>JSON odpověď</summary>
 
-``` json
+```jsonc
 {
    "Events":[
       {
@@ -99,23 +104,26 @@ S `from` vrací události od tohoto data Bez `from` vrací události z celého
       }
    ]
 }
-````````````
+```
+</details>
 
-Přibližně v polovině letních prázdnin začnou servery znepřístupňovat
-data z minulého roku, oba moduly začnou posílat prázdný seznam. Pokud ale
-specifikujeme `from` parametr (například na 1. září uplynulého školního
-roku) vrací modul `my` sice stále prázdný seznam, ale `public` funguje "jako
-normálně". Jelikož ovšem staré třídy, místnosti a žáci zřejmě
-neexistují v backendu v použitelné verzi, vrací server tento tvar:
+-----
 
-````````
+Přibližně v polovině letních prázdnin začnou servery znepřístupňovat data z
+minulého roku, oba moduly začnou posílat prázdný seznam. Pokud ale specifikujeme
+`from` parametr (například na 1. září uplynulého školního roku) vrací modul `my`
+sice stále prázdný seznam, ale `public` funguje "jako normálně". Jelikož ovšem
+staré třídy, místnosti a žáci zřejmě neexistují v backendu v použitelné verzi,
+vrací server tento tvar:
+
+```jsonc
 "Classes":[
    {
       "Id":"",
       "Abbrev":" ()",
       "Name":" ()"
    },
-   ...
+   // ...
 ],
 "Teachers":[
    {
@@ -123,7 +131,7 @@ neexistují v backendu v použitelné verzi, vrací server tento tvar:
       "Abbrev":"FZ",
       "Name":"Funguje beze změny"
    },
-   ...
+   // ...
 ],
 "Rooms":[
    {
@@ -131,29 +139,38 @@ neexistují v backendu v použitelné verzi, vrací server tento tvar:
       "Abbrev":"",
       "Name":""
    },
-   ...
+   // ...
 ],
 "Students":[
-  //prázdné, i když zde původně byli
+  // prázdné, i když zde původně byli
 ]
-````````
+```
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-``````````````````````
-```{"Message":"Authorization has been denied for this request."}```
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-při POST
+### Neplatná metoda
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
+```http
+405 Method Not Allowed
+```
 
-při špatně naformátovaném datu
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
 
-```400 Bad Request```
-``` json
+### Neplatné datum (ve `from` query parametru)
+
+```http
+400 Bad Request
+```
+
+```jsonc
 {
    "Message":"The request is invalid.",
    "ModelState":{
@@ -166,4 +183,5 @@ při špatně naformátovaném datu
       }
    }
 }
-``````````````````````
+```
+

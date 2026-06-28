@@ -1,18 +1,19 @@
 # User
 
-Vrací informace o uživateli.
+## Informace o uživateli
 
-## Požadavek
-```
+### Požadavek
+
+```http
 GET /api/3/user
 Content-Type: application/x-www-form-urlencoded
-"Authorization: Bearer ACCESS_TOKEN"
+Authorization: Bearer ACCESS_TOKEN
 ```
 
-## Odpověď
+### Odpověď
 
-API ```3.14.0```
-```200 OK```
+<details>
+    <summary>API <code>3.14.0</code></summary>
 
 ```jsonc
 {
@@ -114,36 +115,47 @@ API ```3.14.0```
   }
 }
 ```
+</details>
 
-
-
-### Význam ```CampaignCategoryCode```
+### Význam `CampaignCategoryCode`
 
 Používá se u [informačního kanálu (campaign)](../campaign.md).
 
-Po ```Base64``` dekódování dostaneme tuto strukturu:
+Po base64 dekódování dostaneme tuto strukturu:
 
 ```jsonc
 {
-  "sid":"1234", //první část UserUID
+  "sid":"1234", // první část UserUID
   "ut":69,
-  "sy":1        //study year
+  "sy":1        // study year
 }
 ```
 
-Study year se může na mobilu a na webu lišit, [viz #23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
+Study year se může na mobilu a na webu lišit, [viz
+#23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
 
 
-## Chyby
+### Chyby
 
-při starém / neplatném ACCESS TOKENU
+#### Neplatný access token
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+```http
+401 Unauthorized
+```
 
-při POST
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."}```
+#### Neplatná metoda
+
+```http
+405 Method Not Allowed
+```
+
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
 
 (Je možné, že o velkých prázdninách nebude vracet pololetí a možná ani moduly…)
+

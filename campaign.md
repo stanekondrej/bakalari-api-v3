@@ -1,10 +1,9 @@
 # Informační kanál, reklamy (campaign)
 
 Vrací data informačního kanálu. Pro více informací [viz
+#23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
 
-# 23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
-
-```
+```http
 GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 ```
 
@@ -13,9 +12,9 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 - `CampaignCategoryCode` je hodnota vracená pomocí [user](moduly/user.md)
    modulu.
 
-## Vrací
+## Odpověď
 
-````````
+```jsonc
 {
   "banners": [
     {
@@ -26,13 +25,13 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
     }
   ]
 }
-````````
+```
 
 ## Chyby
 
-V případě neplatného `CampaignCategoryCode` vrací
+### Neplatný `CampaignCategoryCode`
 
-````````
+```jsonc
 {
   "type":"https://tools.ietf.org/html/rfc7231#section-6.6.1",
   "title":"An error occured while processing your request.",
@@ -40,4 +39,5 @@ V případě neplatného `CampaignCategoryCode` vrací
   "detail":"Invalid category",
   "traceId":"00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxx-00"
 }
-````````
+```
+

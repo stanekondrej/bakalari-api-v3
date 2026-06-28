@@ -1,12 +1,18 @@
 # Předvídač
 
-## Požadavek
-```
+## Výsledek průměru z Předvídače včetně seznamu známek
+
+### Požadavek
+
+```http
 POST /api/3/marks/what-if
 "Content-Type: application/json; charset=utf-8"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Do těla vkládáme kopii známek předmětu z [/api/3/marks](/moduly/marks.md) podle následující ukázky a poté předvídané známky (mají ID null).
+
+Do těla vkládáme kopii známek předmětu z [/api/3/marks](/moduly/marks.md) podle
+následující ukázky a poté předvídané známky (mají ID null).
+
 ```jsonc
 [
     {
@@ -33,12 +39,13 @@ Do těla vkládáme kopii známek předmětu z [/api/3/marks](/moduly/marks.md) 
 ]
 ```
 
-## Odpověď
+### Odpověď
 
-Výsledek průměru z Předvídače včetně seznamu známek
+```http
+200 OK
+```
 
-```200 OK```
-``` json
+```jsonc
 {
     "Marks": [
         {
@@ -113,19 +120,35 @@ Výsledek průměru z Předvídače včetně seznamu známek
 }
 ```
 
-## Chyby
+### Chyby
 
-při předmětu s hodnotou MarkPredictionEnabled na false
+#### Předmět s hodnotou `MarkPredictionEnabled` nastavenou na `false`
 
-```403 Forbidden```
-```{"Message":"An error has occurred."}```
+```http
+403 Forbidden
+```
 
-při starém / neplatném ACCESS TOKENU
+```jsonc
+{"Message":"An error has occurred."}
+```
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+#### Neplatný ACCESS TOKEN
 
-při GET
+```http
+401 Unauthorized
+```
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'GET'."} ```
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
+
+#### Neplatná metoda
+
+```http
+405 Method Not Allowed
+```
+
+```jsonc
+{"Message":"The requested resource does not support http method 'GET'."}
+```
+
