@@ -41,7 +41,7 @@ Authorization: Bearer ACCESS_TOKEN
           "SubjectId":"10",
           "Id":"O1097"
         },
-        ...
+        // ...
       ],
       "Subjects":[
         {
@@ -59,7 +59,7 @@ Authorization: Bearer ACCESS_TOKEN
           "Abbrev":"M",
           "Name":"Matematika"
         },
-		...
+		// ...
       ],
       "GradeName":"první",
       "Grade":1,

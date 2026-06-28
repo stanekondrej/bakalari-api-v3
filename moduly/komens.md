@@ -11,7 +11,7 @@ formátu.
 {
   "Messages": [
     {
-      "$type": "GeneralMessage",
+      "$type": "GeneralMessage", // viz. poznámka
       "Id": "1234",
       "Title": "Obecná zpráva",
       "Text": "<div>HTML encoded zpráva</div>",
@@ -28,7 +28,7 @@ formátu.
       "DateTo": null,
       "Confirmed": true,
       "CanConfirm": false,
-      "Type": "OBECNA",
+      "Type": "OBECNA", // viz. poznámka
       "CanAnswer": true,
       "Hidden": false,
       "CanHide": true,
@@ -38,6 +38,12 @@ formátu.
   ],
 }
 ```
+
+> [!NOTE]
+> Pozorný čtenář/čtenářka si všimne, že objekt má vlastnost `Type` a také
+> vlastnost `$type`. Toto se zdá být relikvií z minulosti; Bakaláři jsou starý
+> systém a tak se po nějaké době začnou objevovat takovéto věci. Podle mého
+> pozorování by měla obě pole obsahovat stejnou informaci, jen napsanou jinak.
 
 ### Dotazy
 
