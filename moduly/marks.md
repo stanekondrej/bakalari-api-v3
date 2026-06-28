@@ -15,7 +15,7 @@ GET /api/3/marks
 matematika je příkladem procentuálního / bodového známkování
 ```200 OK```
 
-```json
+```jsonc
 {
   "Subjects":[
     {

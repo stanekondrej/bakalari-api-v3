@@ -16,7 +16,7 @@ Parametry `from` a `to` jsou nepovinné. `from` má výchozí hodnotu 14 dní na
 API ```3.14.0```
 ```200 OK```
 
-```json
+```jsonc
 {
    "Homeworks":[
       {

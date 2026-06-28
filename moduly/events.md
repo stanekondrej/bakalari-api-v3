@@ -102,7 +102,7 @@ Bez ```from``` vrací události z celého školního roku
 
 Přibližně v polovině letních prázdnin začnou servery znepřístupňovat data z minulého roku, oba moduly začnou posílat prázdný seznam. Pokud ale specifikujeme ```from``` parametr (například na 1. září uplynulého školního roku) vrací modul ```my``` sice stále prázdný seznam, ale ```public``` funguje "jako normálně". Jelikož ovšem staré třídy, místnosti a žáci zřejmě neexistují v backendu v použitelné verzi, vrací server tento tvar:
 
-```json
+```jsonc
 "Classes":[
    {
       "Id":"",

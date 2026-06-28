@@ -17,7 +17,7 @@ Body: `client_id=ANDR&grant_type=password&username=USERNAME&password=PASSWORD`
 Výsledek requestu:
 *(Počty znaků jsou pouze orientační, aby někdo nebyl zaskočen jejich délkou, která se od starších verzí API rapidně změnila)*
 
-```json
+```jsonc
 {
    "bak:ApiVersion":"3.13.0",
    "bak:AppVersion":"1.35.1029.1",
@@ -59,7 +59,7 @@ Tokeny jsou složeny z jednotlivých částí oddělených tečkami
 
 
 první část ```ACCESS_TOKEN``` po dekódování pomocí Base64
-```json
+```jsonc
 {
   "alg":"RSA-OAEP",
   "enc":"A256CBC-HS512",
@@ -69,7 +69,7 @@ první část ```ACCESS_TOKEN``` po dekódování pomocí Base64
 ```
 
 první část ```REFRESH_TOKEN``` po dekódování pomocí Base64
-```json
+```jsonc
 {
    "alg":"RSA-OAEP",
    "enc":"A256CBC-HS512",
@@ -80,7 +80,7 @@ první část ```REFRESH_TOKEN``` po dekódování pomocí Base64
 
 ```ID token``` je zpracovaný podle ```JWT``` standardu
 
-```json
+```jsonc
 Header
 {
   "alg": "RS256",
@@ -112,7 +112,7 @@ Vždy odpovídá s ```400 Bad Request```
 
 
 Pokus o přihlášení s nesprávnými údaji
-```json
+```jsonc
 {
   "error":"invalid_grant","error_description":"Špatný login nebo heslo"
 }
@@ -121,7 +121,7 @@ Pokus o přihlášení s nesprávnými údaji
 
 
 Bez validního ```refresh_token``` je odpovědí následující
-```json
+```jsonc
 {
   "error":"invalid_grant",
   "error_description":"The specified token is invalid."
@@ -133,7 +133,7 @@ Bez validního ```refresh_token``` je odpovědí následující
 Pro již použitý ```refresh_token``` vrací
 *(Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden refresh token jde použít vícekrát pro získání rozdílných validních párů tokenů. Tato chybová odpověď se začne objevovat až po čtvrtém requestu se stejným tokenem. Tzn. jdou vygenerovat až 3 access tokeny a 3 refresh tokeny z jednoho refresh tokenu. K této duplikaci tokenů by ale běžně nemělo docházet, a proto ji prosím nepoužívejte (+není 100% zdokumentovaná) a uchovávejte vždy poslední pár tokenů)*
 
-```json
+```jsonc
 {
   "error":"invalid_grant",
   "error_description":"The specified refresh token has already been redeemed."
@@ -143,7 +143,7 @@ Pro již použitý ```refresh_token``` vrací
 
 
 Při nepoužití ```grant_type```
-```json
+```jsonc
 {
   "error":"invalid_request","error_description":"The mandatory 'grant_type' parameter is missing."
 }
@@ -152,7 +152,7 @@ Při nepoužití ```grant_type```
 
 
 Při nepoužití ```client_id```
-```json
+```jsonc
 {
   "error":"invalid_client",
   "error_description":"The mandatory 'client_id' parameter is missing."
@@ -162,7 +162,7 @@ Při nepoužití ```client_id```
 
 
 Na starší API bez ```client_id```, nebo ```grant_type``` dostaneme
-```json
+```jsonc
 {
   "error": "invalid_client",
   "error_description": "Unknown Client or invalid grant type."

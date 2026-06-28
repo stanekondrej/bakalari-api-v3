@@ -7,7 +7,7 @@ POST /api/3/marks/what-if
 "Authorization: Bearer ACCESS_TOKEN"
 ```
 Do těla vkládáme kopii známek předmětu z [/api/3/marks](/moduly/marks.md) podle následující ukázky a poté předvídané známky (mají ID null).
-```json
+```jsonc
 [
     {
         "Id":"BNMPSLI70(",

@@ -11,7 +11,7 @@ POST /api/3/marks/SetClassificationConfirmation
 
 do těla je nutné poslat seznam `ID` předmětů k podepsání ve formě `list`
 
-```json
+```jsonc
 ["01YE)R1-5Q","01YE)R1-7V", ...]
 ```
 

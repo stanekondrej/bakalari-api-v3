@@ -66,7 +66,7 @@ Změny jsou také řešené pomocí variací ```ChangeType```
 
 Třídní absence je řešená použitím ```Canceled``` parametru
 
-```json
+```jsonc
 "Change":{
   "ChangeSubject":null,
   "Day":"2020-02-26T00:00:00+01:00",
@@ -80,7 +80,7 @@ Třídní absence je řešená použitím ```Canceled``` parametru
 ```
 ```Added``` - změna nebo přidání hodiny
 
-```json
+```jsonc
 "Change":{
   "ChangeSubject":null,
   "Day":"2020-02-24T00:00:00+01:00",
@@ -94,7 +94,7 @@ Třídní absence je řešená použitím ```Canceled``` parametru
 ```
 ```Removed``` - odstranění hodiny
 
-```json
+```jsonc
 "Change":{
   "ChangeSubject":null,
   "Day":"2020-02-26T00:00:00+01:00",
@@ -108,7 +108,7 @@ Třídní absence je řešená použitím ```Canceled``` parametru
 ```
 ```RoomChanged``` - změna místnosti
 
-```json
+```jsonc
 "Change": {
   "ChangeSubject": null,
   "Day": "2020-10-13T00:00:00+02:00",
@@ -122,7 +122,7 @@ Třídní absence je řešená použitím ```Canceled``` parametru
 ```
 ```Substitution``` - Suplování
 
-```json
+```jsonc
 "Change": {
   "ChangeSubject": null,
   "Day": "2021-06-03T00:00:00+02:00",
@@ -149,7 +149,7 @@ při POST
 při špatně naformátovaném datu
 ```400 Bad Request```
 
-```json
+```jsonc
 {
   "Message":"The request is invalid.",
   "ModelState":{

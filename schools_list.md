@@ -13,7 +13,7 @@ Accept: application/json
 
 ### Odpověď
 
-```json
+```jsonc
 [
   {
     "name": "",
@@ -68,7 +68,7 @@ U měst s tečkou ve jméně (*např.: Ostrava-Mar.Hory*) server vrací ```404``
 
 ### Odpověď
 
-```json
+```jsonc
 {
   "name": "beroun",
   "schools": [

@@ -13,7 +13,7 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 
 ## Vrací
 
-```json
+```jsonc
 {
   "banners": [
     {
@@ -32,7 +32,7 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 
 V případě neplatného ```CampaignCategoryCode``` vrací
 
-```json
+```jsonc
 {
   "type":"https://tools.ietf.org/html/rfc7231#section-6.6.1",
   "title":"An error occured while processing your request.",

@@ -14,7 +14,7 @@ Content-Type: application/x-www-form-urlencoded
 API ```3.14.0```
 ```200 OK```
 
-```json
+```jsonc
 {
   "UserUID":"1234/moje_id",
   "CampaignCategoryCode":"xxxxxxxxxxxxxxx_viz_níže_xxxxxxxxxxxxxxx",
@@ -123,7 +123,7 @@ Používá se u [informačního kanálu (campaign)](../campaign.md).
 
 Po ```Base64``` dekódování dostaneme tuto strukturu:
 
-```json
+```jsonc
 {
   "sid":"1234", //první část UserUID
   "ut":69,

@@ -13,7 +13,7 @@ Do těla vstupuje mimo jiné i typ příjemce(ů) a seznam jejich identifikátor
 
 Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit zprávu.
 
-```json
+```jsonc
 {
   "MessageType": "OBECNA",
   "Title": "Nadpis",

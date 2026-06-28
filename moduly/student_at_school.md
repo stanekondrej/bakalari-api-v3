@@ -14,7 +14,7 @@ Content-Type: application/x-www-form-urlencoded
 API ```3.43.0```
 ```200 OK```
 
-```json
+```jsonc
 false
 ```
 
@@ -24,7 +24,7 @@ Vrací bool
 Školní server musí mít modul [Přístupový systém](https://napoveda.bakalari.cz/index.html?wa_pristsys.htm)
 
 [user.md](moduly/user.md)
-```json
+```jsonc
 {
   "EnabledModules": [
     {

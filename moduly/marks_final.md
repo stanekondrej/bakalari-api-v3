@@ -13,7 +13,7 @@ GET /api/3/marks/final
 ## Odpověď
 
 ```200 OK```
-```json
+```jsonc
 {
   "CertificateTerms":[
     {

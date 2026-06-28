@@ -110,7 +110,7 @@ fetch("https://truhla.bakalari.cz/Timetable/Public/Next/Room/G0")
 
 a přidat do package.json
 
-```json
+```jsonc
 {
     "type": "module"
 }

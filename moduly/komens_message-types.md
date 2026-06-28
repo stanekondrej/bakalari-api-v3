@@ -14,7 +14,7 @@ GET api/3/komens/message-types
 ## Odpověď
 
 ```200 OK```
-```json
+```jsonc
 {
   "MessageTypes": [
     {
