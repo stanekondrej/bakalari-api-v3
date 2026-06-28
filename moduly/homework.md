@@ -1,27 +1,28 @@
 # Úkoly
 
-Související endpointy: [přílohy](attachment.md), [označování
-hotových/nehotových úkolů](student-done.md)
+Související endpointy: 
+
+- [Přílohy](attachment.md)
+- [Označování hotových/nehotových úkolů](student-done.md)
 
 ## Požadavek
 
-```
+```http
 GET /api/3/homeworks (?from=YYYY-MM-dd) (?to=YYYY-MM-dd)
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
 
 ## Odpověď
 
-Parametry `from` a `to` jsou nepovinné. `from` má výchozí hodnotu 14 dní
-nazpět, `to` jeden den dopředu. Bakaláři poté vrátí všechny úkoly,
-které byly zadané nebo mají datum odevzdání v tomto rozsahu. Tzn. když
-`from == to == "2020-10-20"`, tak nedostanete úkol, který byl zadaný 19. 10.
-a má být odevzdaný 21. 10.
+Parametry `from` a `to` jsou nepovinné. `from` má výchozí hodnotu 14 dní nazpět,
+`to` jeden den dopředu. Bakaláři poté vrátí všechny úkoly, které byly zadané
+nebo mají datum odevzdání v tomto rozsahu. Tzn. když `from == to ==
+"2020-10-20"`, tak nedostanete úkol, který byl zadaný 19. 10. a má být odevzdaný
+21. 10.
 
-API `3.14.0`
-
-````````````
+<details>
+<summary>API <code>3.14.0</code></summary>
 
 ```jsonc
 {
@@ -66,15 +67,19 @@ API `3.14.0`
          ],
          "Finished":false
       },
-      ...
+      // ...
   ]
 }  
-````````````
+```
+</details>
 
-API `3.13.0` a níže Navíc existovali parametry `DateAward`, `DateControl`,
-`DateDone`, pro změnu neexistovalo `Finished`.
+<details>
+<summary>API <code>3.13.0</code></summary>
 
-````````
+Ve verzi API `3.13.0` a níže navíc existovaly parametry `DateAward`,
+`DateControl`, `DateDone`; pro změnu neexistovalo `Finished`.
+
+```jsonc
 {
   "Homeworks":[
 	{
@@ -123,30 +128,44 @@ API `3.13.0` a níže Navíc existovali parametry `DateAward`, `DateControl`,
           "Type":"application/pdf",
           "Size":609435
          },
-		 ...
+		 // ...
       ]
     },
-	...
+	// ...
   ]
 }
-````````
+```
+</details>
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-``````````````````````
-```{"Message":"Authorization has been denied for this request."}```
+```http
+401 Unauthorized
+```
 
-při POST
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
+### Neplatná metoda
 
-při špatně naformátovaném datu
+```http
+405 Method Not Allowed
+```
 
-```400 Bad Request```
-``` json
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
+
+### Neplatné datum
+
+```http
+400 Bad Request
+```
+
+```jsonc
 {
    "Message":"The request is invalid.",
    "ModelState":{
@@ -159,4 +178,5 @@ při špatně naformátovaném datu
       }
    }
 }
-``````````````````````
+```
+

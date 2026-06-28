@@ -1,14 +1,13 @@
-# Public timetable
+# Veřejný rozvrh
 
-## !!! TOHLE NEJSOU API KTERÁ BY VRACELA JSON, POUZE HTML API, JE NUTNÉ PARSOVÁNÍ
+> [!IMPORTANT]
+> Tato část API nevrací JSON, nýbrž HTML. Je proto nutné vracená data zpracovat
+> jinak.
 
-### Požadavek
+## Požadavek
 
-```
-GET
-/timetable/Public/Next/(Teacher, Class, Room)/id
-/Timetable/Public/Actual/(Teacher, Class, Room)/id
-/Timetable/Public/Permanent/(Teacher, Class, Room)/id
+```http
+GET /timetable/Public/{Next,Permanent,Actual}/{Teacher,Class,Room}/<id>
 ```
 
 [Příklad pro HTML pro výběr filtrace](../priklady/options.html)
@@ -17,26 +16,26 @@ GET
 
 [Dokumentace pro osobní rozvrh](./timetable.md)
 
-Není potřeba žádná autorizace nebo speciální headers. Při testování
-jsem nedostával ani žádné chyby.
+Není potřeba žádná autorizace nebo speciální hlavičky. Při testování jsem
+nedostával ani žádné chyby.
 
-Parser v JS, je potřeba stáhnout cheerio a node-fetch pomocí správce
-balíčků
+<details>
+    <summary>Parser v JS</summary>
 
-```````
+Je potřeba stáhnout cheerio a node-fetch pomocí správce balíčků
+
+```bash
 # Pro npm
 npm i cheerio node-fetch
 
-#Pro yarn
+# Pro yarn
 yarn add cheerio node-fetch
 
-#Pro pnpm
+# Pro pnpm
 pnpm add cheerio node-fetch
-```````
+```
 
-App.js
-
-`````
+```javascript
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
@@ -110,23 +109,27 @@ fetch("https://truhla.bakalari.cz/Timetable/Public/Next/Room/G0")
         });
     });
 });
-`````
+```
 
-a přidat do package.json
+V `package.json` pak musí být políčko `type` s hodnotou `module`.
 
-````````
+```json
 {
     "type": "module"
 }
-````````
+```
+</details>
 
-Parser v C#, je potřeba stáhnout balíček HtmlAgilityPack
+<details>
+    <summary>Parser v C#</summary>
 
-```````
+Je potřeba stáhnout balíček `HtmlAgilityPack`.
+
+```bash
 dotnet add package HtmlAgilityPack
-```````
+```
 
-`````````
+```csharp
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -252,19 +255,25 @@ class Parser
             }
         }
     }
-`````````
+}
+```
+</details>
 
-Parser v python, je potřeba doinstalovat requests a beautifulsoup4 pomocí pip
+<details>
+    <summary>Parser v python</summary>
 
-```````
-#Pokud ještě nejste ve virtual env, je potřeba ho nejprve vytvořit a poté vstoupit
+Je potřeba doinstalovat `requests` a `beautifulsoup4` přes pip.
+
+```bash
+# Pokud ještě nejste ve virtuálním prostředí, je potřeba ho nejprve vytvořit a
+# poté vstoupit
 python3 -m venv venv #Vytvoři venv složku v aktuálním adresáři
 source venv/bin/activate #Aktivuje venv
 
 pip install requests beautifulsoup4
-```````
+```
 
-`````````
+```python
 import requests
 import html
 import json
@@ -357,4 +366,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-`````````
+```
+</details>
+

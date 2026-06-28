@@ -2,10 +2,10 @@
 
 ## Požadavek
 
-```
+```http
 GET /api/3/substitutions (?from=YYYY-MM-dd)
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
 
 ## Odpověď
@@ -13,8 +13,7 @@ GET /api/3/substitutions (?from=YYYY-MM-dd)
 Bez `from` parametru vrací 14 dní od pondělí tohoto týdne S `from`
 parametrem vrací 14 dní od data včetně.
 
-````````````
-``` json
+```jsonc
 {
    "From":"2020-06-15T00:00:00+02:00",
    "To":"2020-06-29T00:00:00+02:00",
@@ -49,27 +48,40 @@ parametrem vrací 14 dní od data včetně.
          "TypeAbbrev":null,
          "TypeName":null
       },
-	  ...
+	  // ...
    ]
 }
-````````````
+```
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-``````````````````````
-```{"Message":"Authorization has been denied for this request."}```
+```http
+401 Unauthorized
+```
 
-při POST
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
+### Neplatná metoda
 
-při špatně naformátovaném datu
+```http
+405 Method Not Allowed
+```
 
-```400 Bad Request```
-``` json
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
+
+### Neplatné datum
+
+```http
+400 Bad Request
+```
+
+```jsonc
 {
    "Message":"The request is invalid.",
    "ModelState":{
@@ -82,4 +94,5 @@ při špatně naformátovaném datu
       }
    }
 }
-``````````````````````
+```
+

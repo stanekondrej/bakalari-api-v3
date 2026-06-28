@@ -1,26 +1,24 @@
 # User
 
-Vrací informace o lokaci žáka.
+## Informace o lokaci žáka
 
-## Požadavek
+### Požadavek
 
-```
+```http
 GET /api/3/user/student-at-school
 Content-Type: application/x-www-form-urlencoded
-"Authorization: Bearer ACCESS_TOKEN"
+Authorization: Bearer ACCESS_TOKEN
 ```
 
-## Odpověď
+### Odpověď
 
-API `3.43.0`
-
-````````````
+<details>
+    <summary>API <code>3.43.0</code></summary>
 
 ```jsonc
 false
-````````````
-
-Vrací bool
+```
+</details>
 
 ## Přístupový systém
 
@@ -29,7 +27,7 @@ systém](https://napoveda.bakalari.cz/index.html?wa_pristsys.htm)
 
 [user.md](moduly/user.md)
 
-````````
+```jsonc
 {
   "EnabledModules": [
     {
@@ -40,16 +38,25 @@ systém](https://napoveda.bakalari.cz/index.html?wa_pristsys.htm)
     }
   ]
 }
-````````
+```
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-`401 Unauthorized` `{"Message":"Authorization has been denied for this
-request."}`
+```http
+401 Unauthorized
+```
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-při POST
+### Neplatná metoda
 
-`405 Method Not Allowed` `{"Message":"The requested resource does not support
-http method 'POST'."}`
+```http
+405 Method Not Allowed
+```
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
+

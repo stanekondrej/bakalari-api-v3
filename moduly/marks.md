@@ -1,21 +1,22 @@
 # Známky
 
-vrací předměty a jejich známky
+Vrací předměty a jejich známky.
 
 ## Požadavek
 
-```
+```http
 GET /api/3/marks
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
 
 ## Odpověď
 
-Čeština je příkladem klasického známkování (1, 1-, ...). matematika je
-příkladem procentuálního / bodového známkování
+Čeština je příkladem klasického známkování (1, 1-, ...). matematika je příkladem
+procentuálního/bodového známkování.
 
-````````````
+<details>
+<summary>JSON tělo odpovědi</summary>
 
 ```jsonc
 {
@@ -204,19 +205,29 @@ příkladem procentuálního / bodového známkování
       "PointsOnly":false,
       "MarkPredictionEnabled":true
     },
-	...
+	// ...
   ]
 }
-````````````
+```
+</details>
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-`401 Unauthorized` `{"Message":"Authorization has been denied for this
-request."}`
+```http
+401 Unauthorized
+```
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-při POST
+### Neplatná metoda
 
-`405 Method Not Allowed` `{"Message":"The requested resource does not support
-http method 'POST'."}`
+```http
+405 Method Not Allowed
+```
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
+

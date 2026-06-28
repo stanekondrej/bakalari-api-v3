@@ -4,24 +4,31 @@
 
 ## Aktuální rozvrh:
 
-[Příklad běžného rozvrhu](rozvrh_priklady/bezny.json) formát data
-`YYYY-MM-dd`
+### Požadavek
 
-```
+```http
 GET /api/3/timetable/actual?date=YYYY-MM-dd
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
+
+### Odpověď
+
+[Příklad](rozvrh_priklady/bezny.json)
 
 ## Stálý rozvrh:
 
-[Příklad stálého rozvrhu](rozvrh_priklady/staly.json)
+### Požadavek
 
-```
+```http
 GET /api/3/timetable/permanent
-"Content-Type: application/x-www-form-urlencoded"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer ACCESS_TOKEN
 ```
+
+### Odpověď
+
+[Příklad](rozvrh_priklady/staly.json)
 
 ## Prázdniny
 
@@ -57,11 +64,10 @@ známé hodnoty parametru `Days.DayType`
 
 ### Změny
 
-Změny jsou také řešené pomocí variací `ChangeType`
+Změny jsou také řešené pomocí variací `ChangeType`. Třídní absence je řešená
+použitím `Canceled` parametru.
 
-Třídní absence je řešená použitím `Canceled` parametru
-
-````````
+```jsonc
 "Change":{
   "ChangeSubject":null,
   "Day":"2020-02-26T00:00:00+01:00",
@@ -72,9 +78,7 @@ Třídní absence je řešená použitím `Canceled` parametru
   "TypeAbbrev":"Absc",
   "TypeName":"Obecná absence třídy"
 }
-````````
-
-```````````````````````````````````````````
+```
 
 ```jsonc
 "Change":{
@@ -87,9 +91,7 @@ Třídní absence je řešená použitím `Canceled` parametru
   "TypeAbbrev":null,
   "TypeName":null
 }
-```````````````````````````````````````````
-
-```````````````````````````````````
+```
 
 ```jsonc
 "Change":{
@@ -102,9 +104,7 @@ Třídní absence je řešená použitím `Canceled` parametru
   "TypeAbbrev":null,
   "TypeName":null
 }
-```````````````````````````````````
-
-`````````````````````````````````````
+```
 
 ```jsonc
 "Change": {
@@ -117,9 +117,7 @@ Třídní absence je řešená použitím `Canceled` parametru
   "TypeAbbrev": null,
   "TypeName": null
 }
-`````````````````````````````````````
-
-````````````````````````````````
+```
 
 ```jsonc
 "Change": {
@@ -132,22 +130,35 @@ Třídní absence je řešená použitím `Canceled` parametru
   "TypeAbbrev": null,
   "TypeName": null
 }
-````````````````````````````````
+```
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-``````````````````````
-```{"Message":"Authorization has been denied for this request."}```
+```http
+401 Unauthorized
+```
 
-při POST
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."}```
+### Neplatná metoda
 
-při špatně naformátovaném datu
-```400 Bad Request```
+```http
+405 Method Not Allowed
+```
+
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```
+
+### Neplatné datum
+
+```http
+400 Bad Request
+```
 
 ```jsonc
 {
@@ -162,4 +173,5 @@ při špatně naformátovaném datu
     }
   }
 }
-``````````````````````
+```
+

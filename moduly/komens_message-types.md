@@ -1,23 +1,22 @@
 # Typy zpráv (komens)
 
 Tento endpoint vrací list `MessageTypes` obsahující typy účtů, kterým lze
-odeslat nová zpráva. U každého typu účtu je se seznam odpovídajících
-příjemců (učitelů).
+odeslat nová zpráva. U každého typu účtu je se seznam odpovídajících příjemců
+(učitelů).
 
-Na konci zprávy se nachází seznam `Recipients` obsahující všechny
-příjemnce na škole (učitele).
+Na konci zprávy se nachází seznam `Recipients` obsahující všechny příjemnce na
+škole (učitele).
 
 ## Požadavek
 
-```
-GET api/3/komens/message-types
-"Content-Type: application/json"
-"Authorization: Bearer ACCESS_TOKEN"
+```http
+GET /api/3/komens/message-types
+Content-Type: application/json
+Authorization: Bearer ACCESS_TOKEN
 ```
 
 ## Odpověď
 
-````````````
 ```jsonc
 {
   "MessageTypes": [
@@ -94,16 +93,26 @@ GET api/3/komens/message-types
     }
   ]
 }
-````````````
+```
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-`401 Unauthorized` `{"Message":"Authorization has been denied for this
-request."}`
+```http
+401 Unauthorized
+```
 
-při POST
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-`405 Method Not Allowed` `{"Message":"The requested resource does not support
-http method 'POST'."}`
+### Neplatná metoda
+
+```http
+405 Method Not Allowed
+```
+
+```jsonc
+{"Message":"The requested resource does not support http method 'POST'."}
+```

@@ -2,22 +2,20 @@
 
 ## Poslání nové zprávy (komens)
 
-## Požadavek
+### Požadavek
 
-```
+```http
 POST /api/3/komens/message
-"Content-Type: application/json; charset=utf-8"
-"Authorization: Bearer ACCESS_TOKEN"
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer ACCESS_TOKEN
 ```
 
-Do těla vstupuje mimo jiné i typ příjemce(ů) a seznam jejich
-identifikátorů z [komens/message-types](/moduly/komens_message-types.md)
-modulu.
+Do těla vstupuje mimo jiné i typ příjemce(ů) a seznam jejich identifikátorů z
+[komens/message-types](/moduly/komens_message-types.md) modulu.
 
-Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit
-zprávu.
+Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit zprávu.
 
-````````
+```jsonc
 {
   "MessageType": "OBECNA",
   "Title": "Nadpis",
@@ -40,25 +38,35 @@ zprávu.
   "Attachments": [],
   "DraftDate": null
 }
-````````
+```
 
-## Odpověď
+### Odpověď
 
-````````````
-``` json
+``` jsonc
 {
   "Message": ""
 }
-````````````
+```
 
 ## Chyby
 
-při starém / neplatném ACCESS TOKENU
+### Neplatný access token
 
-`401 Unauthorized` `{"Message":"Authorization has been denied for this
-request."}`
+```http
+401 Unauthorized
+```
 
-při GET
+```jsonc
+{"Message":"Authorization has been denied for this request."}
+```
 
-`405 Method Not Allowed` `{"Message":"The requested resource does not support
-http method 'GET'."}`
+### Neplatná metoda
+
+```http
+405 Method Not Allowed
+```
+
+```jsonc
+{"Message":"The requested resource does not support http method 'GET'."}
+```
+
