@@ -3,6 +3,7 @@
 ## Požadavek
 
 Všechny události:
+
 ```
 GET /api/3/events (?from=YYYY-MM-dd)
 "Content-Type: application/x-www-form-urlencoded"
@@ -10,6 +11,7 @@ GET /api/3/events (?from=YYYY-MM-dd)
 ```
 
 Pouze události uživatele:
+
 ```
 GET /api/3/events/my (?from=YYYY-MM-dd)
 "Content-Type: application/x-www-form-urlencoded"
@@ -17,6 +19,7 @@ GET /api/3/events/my (?from=YYYY-MM-dd)
 ```
 
 Veřejné události:
+
 ```
 GET /api/3/events/public (?from=YYYY-MM-dd)
 "Content-Type: application/x-www-form-urlencoded"
@@ -25,10 +28,10 @@ GET /api/3/events/public (?from=YYYY-MM-dd)
 
 ## Odpověď
 
-S ```from``` vrací události od tohoto data
-Bez ```from``` vrací události z celého školního roku
+S `from` vrací události od tohoto data Bez `from` vrací události z celého
+školního roku
 
-```200 OK```
+````````````
 
 ``` json
 {
@@ -96,13 +99,16 @@ Bez ```from``` vrací události z celého školního roku
       }
    ]
 }
-```
+````````````
 
+Přibližně v polovině letních prázdnin začnou servery znepřístupňovat
+data z minulého roku, oba moduly začnou posílat prázdný seznam. Pokud ale
+specifikujeme `from` parametr (například na 1. září uplynulého školního
+roku) vrací modul `my` sice stále prázdný seznam, ale `public` funguje "jako
+normálně". Jelikož ovšem staré třídy, místnosti a žáci zřejmě
+neexistují v backendu v použitelné verzi, vrací server tento tvar:
 
-
-Přibližně v polovině letních prázdnin začnou servery znepřístupňovat data z minulého roku, oba moduly začnou posílat prázdný seznam. Pokud ale specifikujeme ```from``` parametr (například na 1. září uplynulého školního roku) vrací modul ```my``` sice stále prázdný seznam, ale ```public``` funguje "jako normálně". Jelikož ovšem staré třídy, místnosti a žáci zřejmě neexistují v backendu v použitelné verzi, vrací server tento tvar:
-
-```jsonc
+````````
 "Classes":[
    {
       "Id":"",
@@ -130,15 +136,13 @@ Přibližně v polovině letních prázdnin začnou servery znepřístupňovat d
 "Students":[
   //prázdné, i když zde původně byli
 ]
-```
-
-
+````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
+``````````````````````
 ```{"Message":"Authorization has been denied for this request."}```
 
 při POST
@@ -162,8 +166,4 @@ při špatně naformátovaném datu
       }
    }
 }
-```
-
-
-
-
+``````````````````````

@@ -1,8 +1,10 @@
 # Úkoly
 
-Související endpointy: [přílohy](attachment.md), [označování hotových/nehotových úkolů](student-done.md)
+Související endpointy: [přílohy](attachment.md), [označování
+hotových/nehotových úkolů](student-done.md)
 
 ## Požadavek
+
 ```
 GET /api/3/homeworks (?from=YYYY-MM-dd) (?to=YYYY-MM-dd)
 "Content-Type: application/x-www-form-urlencoded"
@@ -11,10 +13,15 @@ GET /api/3/homeworks (?from=YYYY-MM-dd) (?to=YYYY-MM-dd)
 
 ## Odpověď
 
-Parametry `from` a `to` jsou nepovinné. `from` má výchozí hodnotu 14 dní nazpět, `to` jeden den dopředu. Bakaláři poté vrátí všechny úkoly, které byly zadané nebo mají datum odevzdání v tomto rozsahu. Tzn. když `from == to == "2020-10-20"`, tak nedostanete úkol, který byl zadaný 19. 10. a má být odevzdaný 21. 10.
+Parametry `from` a `to` jsou nepovinné. `from` má výchozí hodnotu 14 dní
+nazpět, `to` jeden den dopředu. Bakaláři poté vrátí všechny úkoly,
+které byly zadané nebo mají datum odevzdání v tomto rozsahu. Tzn. když
+`from == to == "2020-10-20"`, tak nedostanete úkol, který byl zadaný 19. 10.
+a má být odevzdaný 21. 10.
 
-API ```3.14.0```
-```200 OK```
+API `3.14.0`
+
+````````````
 
 ```jsonc
 {
@@ -62,12 +69,12 @@ API ```3.14.0```
       ...
   ]
 }  
-```
+````````````
 
-API ```3.13.0``` a níže
-Navíc existovali parametry ```DateAward```, ```DateControl```, ```DateDone```, pro změnu neexistovalo ```Finished```.
+API `3.13.0` a níže Navíc existovali parametry `DateAward`, `DateControl`,
+`DateDone`, pro změnu neexistovalo `Finished`.
 
-``` json
+````````
 {
   "Homeworks":[
 	{
@@ -122,15 +129,13 @@ Navíc existovali parametry ```DateAward```, ```DateControl```, ```DateDone```, 
 	...
   ]
 }
-```
-
-
+````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
+``````````````````````
 ```{"Message":"Authorization has been denied for this request."}```
 
 při POST
@@ -154,6 +159,4 @@ při špatně naformátovaném datu
       }
    }
 }
-```
-
-
+``````````````````````

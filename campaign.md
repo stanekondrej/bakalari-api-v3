@@ -1,19 +1,21 @@
 # Informační kanál, reklamy (campaign)
 
-Vrací data informačního kanálu. Pro více informací [viz #23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
+Vrací data informačního kanálu. Pro více informací [viz
+
+# 23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
 
 ```
 GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 ```
 
-* `Location` odpovídá platformě a umístění (`mobileapp`, `LargeBanner` nebo `SmallBannersPanel`),
-* `CampaignCategoryCode` je hodnota vracená pomocí [user](moduly/user.md) modulu.
-
-
+- `Location` odpovídá platformě a umístění (`mobileapp`, `LargeBanner`
+   nebo `SmallBannersPanel`),
+- `CampaignCategoryCode` je hodnota vracená pomocí [user](moduly/user.md)
+   modulu.
 
 ## Vrací
 
-```jsonc
+````````
 {
   "banners": [
     {
@@ -24,15 +26,13 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
     }
   ]
 }
-```
-
-
+````````
 
 ## Chyby
 
-V případě neplatného ```CampaignCategoryCode``` vrací
+V případě neplatného `CampaignCategoryCode` vrací
 
-```jsonc
+````````
 {
   "type":"https://tools.ietf.org/html/rfc7231#section-6.6.1",
   "title":"An error occured while processing your request.",
@@ -40,7 +40,4 @@ V případě neplatného ```CampaignCategoryCode``` vrací
   "detail":"Invalid category",
   "traceId":"00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxx-00"
 }
-```
-
-
-
+````````

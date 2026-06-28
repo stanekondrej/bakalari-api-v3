@@ -1,12 +1,11 @@
 # Platby
 
-
-
 ## Celkový stav fondu
 
 vrací celkový stav třídního fondu při odeslání požadavku
 
 ### Požadavek
+
 ```
 GET /api/3/payments/classfund/summary
 "Content-Type: application/json"
@@ -15,33 +14,38 @@ GET /api/3/payments/classfund/summary
 
 ### Odpověď
 
-```200 OK```
+````````````
 ``` json
 {
     "StudentNameWithClass": "Novák Jan (1.A)",
     "Balance": 1000.00,
     "Spent": -5052.97
 }
-```
+````````````
 
 ## Seznam plateb
 
-vrací seznam všech provedených plateb (příjmů i výdajů) seskupených po měsících
+vrací seznam všech provedených plateb (příjmů i výdajů) seskupených po
+měsících
 
 ### Požadavek
+
 ```
 GET /api/3/payments/classfund (?sort=asc nebo ?sort=desc) (?search=hledám)
 "Content-Type: application/json"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
 
-Parametr ```sort``` může být `asc` (od nejstaršího data po nejnovější) nebo `desc` (od nejnovějšího data po nejstarší). 
+Parametr `sort` může být `asc` (od nejstaršího data po nejnovější) nebo
+`desc` (od nejnovějšího data po nejstarší).
 
-Parametr ```search``` může být libovolný textový řetězec, který není prázdný (vrátí pak chybu ```400 Bad request```). Nuly a případné speciální znaky převedeme standartně pomocí URL kódování.
+Parametr `search` může být libovolný textový řetězec, který není
+prázdný (vrátí pak chybu `400 Bad request`). Nuly a případné speciální
+znaky převedeme standartně pomocí URL kódování.
 
 ### Odpověď
 
-``` json
+````````
 {
     "MonthlyData": [
         {
@@ -78,18 +82,17 @@ Parametr ```search``` může být libovolný textový řetězec, který není pr
         }
     ]
 }
-```
+````````
 
-V případě, že ```sort``` nespecifikujeme, systém vrátí platby sestupně.
-
-
-
+V případě, že `sort` nespecifikujeme, systém vrátí platby sestupně.
 
 ## Vložit peníze
 
-vrací údaje pro vkládání peněz do fondu, mobilní aplikace na základě těchto dat vytváří QR kód (není vytvářen serverem)
+vrací údaje pro vkládání peněz do fondu, mobilní aplikace na základě
+těchto dat vytváří QR kód (není vytvářen serverem)
 
 ### Požadavek
+
 ```
 GET /api/3/payments/classfund/paymentsinfo
 "Content-Type: application/json"
@@ -97,7 +100,8 @@ GET /api/3/payments/classfund/paymentsinfo
 ```
 
 ### Odpověď
-```200 OK```
+
+````````````
 
 ``` json
 {
@@ -108,14 +112,13 @@ GET /api/3/payments/classfund/paymentsinfo
     "Amount": 0,
     "Message": "1.A  Novák Jan třídní fond"
 }
-```
-
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
+``````````````````````
 ```{"Message":"Authorization has been denied for this request."}```
 
 při POST
@@ -139,4 +142,4 @@ při prázdném `search` (?search=)
         }
     }
 }
-```
+``````````````````````

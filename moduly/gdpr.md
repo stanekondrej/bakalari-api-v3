@@ -1,6 +1,7 @@
 # GDPR
 
 ## Požadavek
+
 ```
 GET /api/3/gdpr/commissioners
 "Content-Type: application/x-www-form-urlencoded"
@@ -11,7 +12,7 @@ GET /api/3/gdpr/commissioners
 
 Informace o pověřenci pro ochranu osobních údajů
 
-```200 OK```
+````````````
 ``` json
 {
   "Commissioners": [
@@ -26,20 +27,16 @@ Informace o pověřenci pro ochranu osobních údajů
     }
   ]
 }
-```
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+`401 Unauthorized` `{"Message":"Authorization has been denied for this
+request."}`
 
 při POST
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
-
-
-
-
+`405 Method Not Allowed` `{"Message":"The requested resource does not support
+http method 'POST'."}`

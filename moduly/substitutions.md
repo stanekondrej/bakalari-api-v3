@@ -1,6 +1,7 @@
 # Zastupování
 
 ## Požadavek
+
 ```
 GET /api/3/substitutions (?from=YYYY-MM-dd)
 "Content-Type: application/x-www-form-urlencoded"
@@ -9,10 +10,10 @@ GET /api/3/substitutions (?from=YYYY-MM-dd)
 
 ## Odpověď
 
-Bez ```from``` parametru vrací 14 dní od pondělí tohoto týdne
-S ```from``` parametrem vrací 14 dní od data včetně.
+Bez `from` parametru vrací 14 dní od pondělí tohoto týdne S `from`
+parametrem vrací 14 dní od data včetně.
 
-```200 OK```
+````````````
 ``` json
 {
    "From":"2020-06-15T00:00:00+02:00",
@@ -51,13 +52,13 @@ S ```from``` parametrem vrací 14 dní od data včetně.
 	  ...
    ]
 }
-```
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
+``````````````````````
 ```{"Message":"Authorization has been denied for this request."}```
 
 při POST
@@ -81,6 +82,4 @@ při špatně naformátovaném datu
       }
    }
 }
-```
-
-
+``````````````````````

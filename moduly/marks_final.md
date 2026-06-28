@@ -12,7 +12,7 @@ GET /api/3/marks/final
 
 ## Odpověď
 
-```200 OK```
+````````````
 ```jsonc
 {
   "CertificateTerms":[
@@ -303,19 +303,16 @@ GET /api/3/marks/final
     }
   ]
 }
-```
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+`401 Unauthorized` `{"Message":"Authorization has been denied for this
+request."}`
 
 při POST
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
-
-
-
+`405 Method Not Allowed` `{"Message":"The requested resource does not support
+http method 'POST'."}`

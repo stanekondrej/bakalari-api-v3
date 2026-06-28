@@ -1,8 +1,10 @@
 # Výchovná opatření
 
-vrací kázeňské přestupky a pochvaly (třídního učitele, ředitele) za celou dobu studia
+vrací kázeňské přestupky a pochvaly (třídního učitele, ředitele) za
+celou dobu studia
 
 ## Požadavek
+
 ```
 GET /api/3/marks/measures
 "Content-Type: application/x-www-form-urlencoded"
@@ -11,7 +13,7 @@ GET /api/3/marks/measures
 
 ## Odpověď
 
-```200 OK```
+````````````
 ``` json
 {
   "PedagogicalMeasures":[
@@ -33,18 +35,16 @@ GET /api/3/marks/measures
     }
   ]
 }
-```
-
-
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+`401 Unauthorized` `{"Message":"Authorization has been denied for this
+request."}`
 
 při POST
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
+`405 Method Not Allowed` `{"Message":"The requested resource does not support
+http method 'POST'."}`

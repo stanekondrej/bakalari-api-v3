@@ -1,10 +1,14 @@
 # Typy zpráv (komens)
 
-Tento endpoint vrací list `MessageTypes` obsahující typy účtů, kterým lze odeslat nová zpráva. U každého typu účtu je se seznam odpovídajících příjemců (učitelů).
+Tento endpoint vrací list `MessageTypes` obsahující typy účtů, kterým lze
+odeslat nová zpráva. U každého typu účtu je se seznam odpovídajících
+příjemců (učitelů).
 
-Na konci zprávy se nachází seznam `Recipients` obsahující všechny příjemnce na škole (učitele). 
+Na konci zprávy se nachází seznam `Recipients` obsahující všechny
+příjemnce na škole (učitele).
 
 ## Požadavek
+
 ```
 GET api/3/komens/message-types
 "Content-Type: application/json"
@@ -13,7 +17,7 @@ GET api/3/komens/message-types
 
 ## Odpověď
 
-```200 OK```
+````````````
 ```jsonc
 {
   "MessageTypes": [
@@ -90,16 +94,16 @@ GET api/3/komens/message-types
     }
   ]
 }
-```
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+`401 Unauthorized` `{"Message":"Authorization has been denied for this
+request."}`
 
 při POST
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
+`405 Method Not Allowed` `{"Message":"The requested resource does not support
+http method 'POST'."}`

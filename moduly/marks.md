@@ -3,17 +3,19 @@
 vrací předměty a jejich známky
 
 ## Požadavek
+
 ```
 GET /api/3/marks
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
 
-
 ## Odpověď
-Čeština je příkladem klasického známkování (1, 1-, ...).
-matematika je příkladem procentuálního / bodového známkování
-```200 OK```
+
+Čeština je příkladem klasického známkování (1, 1-, ...). matematika je
+příkladem procentuálního / bodového známkování
+
+````````````
 
 ```jsonc
 {
@@ -205,16 +207,16 @@ matematika je příkladem procentuálního / bodového známkování
 	...
   ]
 }
-```
+````````````
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+`401 Unauthorized` `{"Message":"Authorization has been denied for this
+request."}`
 
 při POST
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
+`405 Method Not Allowed` `{"Message":"The requested resource does not support
+http method 'POST'."}`

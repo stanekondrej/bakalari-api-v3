@@ -4,9 +4,10 @@
 
 ### Odpověď
 
-Veškeré otázky, které vracejí nějaký seznam komens, je vrací v tomto formátu.
+Veškeré otázky, které vracejí nějaký seznam komens, je vrací v tomto
+formátu.
 
-``` json
+````````
 {
   "Messages": [
     {
@@ -36,7 +37,7 @@ Veškeré otázky, které vracejí nějaký seznam komens, je vrací v tomto for
     }
   ]
 }
-```
+````````
 
 ### Dotazy
 
@@ -47,27 +48,24 @@ POST /api/3/komens/messages/received
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Vrací přijaté komens.
-Vrací výchozí odpověď.
 
+Vrací přijaté komens. Vrací výchozí odpověď.
 
 ```
 POST /api/3/komens/messages/sent
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Vrací odeslané komens.
-Vrací výchozí odpověď.
 
+Vrací odeslané komens. Vrací výchozí odpověď.
 
 ```
 POST /api/3/komens/messages/noticeboard
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Vrací komens připnuté k noticeboard.
-Vrací výchozí odpověď.
 
+Vrací komens připnuté k noticeboard. Vrací výchozí odpověď.
 
 ## Dotaz na jednotlivý komens
 
@@ -78,11 +76,13 @@ GET /api/3/komens/messages/{received/sent}/$ID
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Vrací detail jednoho komens podle kategorie ve formátu jednoho JSON objektu komens.
+
+Vrací detail jednoho komens podle kategorie ve formátu jednoho JSON objektu
+komens.
 
 ### Odpověď
 
-``` json
+````````
 {
   "Message": {
     "$type": "SentMessageWithRecipientsDetail",
@@ -149,32 +149,30 @@ Vrací detail jednoho komens podle kategorie ve formátu jednoho JSON objektu ko
     "RelevantPersonType": "teacher"
   }
 }
-```
-
+````````
 
 ## Dotaz na označení komens jako přečtené
-
 
 ```
 PUT /api/3/komens/message/$ID/mark-as-read
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Nastavuje komens jako přečtený v systému Bakalářů. (Doporučuji zavolat zároveň při získávání detailu zprávy při atributu `Read` na `false`)
+
+Nastavuje komens jako přečtený v systému Bakalářů. (Doporučuji zavolat
+zároveň při získávání detailu zprávy při atributu `Read` na `false`)
 
 Vrací prázdnou HTTP odpověď `204`.
 
-
 ## Dotazy na počet nepřečtených komens
-
 
 ### Odpověď
 
 Vrací počet nepřečtených komens v daném seznamu.
 
-``` json
+````````
 0
-```
+````````
 
 ### Dotazy
 
@@ -183,28 +181,25 @@ GET /api/3/komens/messages/received/unread
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Vrací počet přijatých komens.
-Vrací výchozí odpověď.
 
+Vrací počet přijatých komens. Vrací výchozí odpověď.
 
 ```
 GET /api/3/komens/messages/noticeboard/unread
 "Content-Type: application/x-www-form-urlencoded"
 "Authorization: Bearer ACCESS_TOKEN"
 ```
-Vrací počet komens připnutých k noticeboard.
-Vrací výchozí odpověď.
+
+Vrací počet komens připnutých k noticeboard. Vrací výchozí odpověď.
 
 ## Chyby
 
 při starém / neplatném ACCESS TOKENU
 
-```401 Unauthorized```
-```{"Message":"Authorization has been denied for this request."}```
+`401 Unauthorized` `{"Message":"Authorization has been denied for this
+request."}`
 
 při POST
 
-```405 Method Not Allowed```
-```{"Message":"The requested resource does not support http method 'POST'."} ```
-
-
+`405 Method Not Allowed` `{"Message":"The requested resource does not support
+http method 'POST'."}`
