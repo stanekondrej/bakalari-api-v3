@@ -13,7 +13,7 @@ Authorization: Bearer ACCESS_TOKEN
 Do těla je nutné poslat seznam `ID` předmětů k podepsání ve formě `list`
 
 ```jsonc
-["01YE)R1-5Q","01YE)R1-7V", /* ... */ ]
+["01YE)R1-5Q", "01YE)R1-7V" /* ... */]
 ```
 
 ## Odpověď
@@ -39,7 +39,7 @@ Do těla je nutné poslat seznam `ID` předmětů k podepsání ve formě `list`
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -49,7 +49,7 @@ Do těla je nutné poslat seznam `ID` předmětů k podepsání ve formě `list`
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
 
 ### Chybějící či neplatné tělo
@@ -59,6 +59,5 @@ Do těla je nutné poslat seznam `ID` předmětů k podepsání ve formě `list`
 ```
 
 ```jsonc
-{"Message": "An error has occurred."}
+{ "Message": "An error has occurred." }
 ```
-

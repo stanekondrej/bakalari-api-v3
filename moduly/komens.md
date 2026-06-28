@@ -19,7 +19,7 @@ formátu.
       "Sender": {
         "Id": "UZYNQ",
         "Type": "administrator",
-        "Name": "Jan Novák (ředitelství)"
+        "Name": "Jan Novák (ředitelství)",
       },
       "Attachments": [],
       "Read": true,
@@ -33,9 +33,9 @@ formátu.
       "Hidden": false,
       "CanHide": true,
       "RelevantName": "ředitelství",
-      "RelevantPersonType": "administrator"
-    }
-  ]
+      "RelevantPersonType": "administrator",
+    },
+  ],
 }
 ```
 
@@ -89,16 +89,16 @@ komens.
     "Recipients": [
       {
         "RecipientId": "UZYNQ",
-        "UserType": "teacher"
-      }
+        "UserType": "teacher",
+      },
     ],
     "RecipientsProcessed": [
       {
         "RecipientId": "UZYNQ",
         "UserType": "teacher",
         "ActionDate": "2025-02-23T23:47:07+01:00",
-        "ParentPersons": []
-      }
+        "ParentPersons": [],
+      },
     ],
     "Persons": [
       {
@@ -110,7 +110,7 @@ komens.
         "LastName": "Novák",
         "Degree": "Ing.",
         "DegreeBehind": "",
-        "ClassAbbreviation": null
+        "ClassAbbreviation": null,
       },
       {
         "Id": "AABBCC",
@@ -121,8 +121,8 @@ komens.
         "LastName": "Vomáčka",
         "Degree": null,
         "DegreeBehind": null,
-        "ClassAbbreviation": "4ITB"
-      }
+        "ClassAbbreviation": "4ITB",
+      },
     ],
     "Attachments": [],
     "DateFrom": "2025-02-19T00:00:00+01:00",
@@ -138,7 +138,7 @@ komens.
     "Sender": {
       "Id": "AABBCC",
       "Type": "student",
-      "Name": "Honza Vomáčka, 1.B"
+      "Name": "Honza Vomáčka, 1.B",
     },
     "Read": true,
     "LifeTime": "ToConfirm",
@@ -146,8 +146,8 @@ komens.
     "Type": "OMLUVENKA",
     "Hidden": false,
     "RelevantName": "Ing. Jan Novák",
-    "RelevantPersonType": "teacher"
-  }
+    "RelevantPersonType": "teacher",
+  },
 }
 ```
 
@@ -203,7 +203,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -213,6 +213,5 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
-

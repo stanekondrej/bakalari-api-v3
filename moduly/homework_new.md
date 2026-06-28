@@ -27,8 +27,9 @@ Vrací počet úkolů s hodnotou `"Closed":false`
 ```http
 401 Unauthorized
 ```
+
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -38,5 +39,5 @@ Vrací počet úkolů s hodnotou `"Closed":false`
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```

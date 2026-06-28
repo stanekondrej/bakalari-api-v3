@@ -17,104 +17,81 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```jsonc
 {
-  "UserUID":"1234/moje_id",
-  "CampaignCategoryCode":"xxxxxxxxxxxxxxx_viz_níže_xxxxxxxxxxxxxxx",
-  "Class":{
-    "Id":"XL",
-    "Abbrev":"X.A",
-    "Name":"X. A" // nebo také prázdné!
+  "UserUID": "1234/moje_id",
+  "CampaignCategoryCode": "xxxxxxxxxxxxxxx_viz_níže_xxxxxxxxxxxxxxx",
+  "Class": {
+    "Id": "XL",
+    "Abbrev": "X.A",
+    "Name": "X. A", // nebo také prázdné!
   },
-  "FullName":"Příjmení Jméno, X.A",
-  "SchoolOrganizationName":"škola",
-  "SchoolType":null,
-  "UserType":"parents",
-  "UserTypeText":"rodič",
-  "StudyYear":1,
-  "EnabledModules":[
+  "FullName": "Příjmení Jméno, X.A",
+  "SchoolOrganizationName": "škola",
+  "SchoolType": null,
+  "UserType": "parents",
+  "UserTypeText": "rodič",
+  "StudyYear": 1,
+  "EnabledModules": [
     {
-      "Module":"Komens",
-      "Rights":[
+      "Module": "Komens",
+      "Rights": [
         "ShowReceivedMessages",
         "ShowSentMessages",
         "ShowNoticeBoardMessages",
         "SendMessages",
         "ShowRatingDetails",
-        "SendAttachments"
-      ]
+        "SendAttachments",
+      ],
     },
     {
-      "Module":"Absence",
-      "Rights":[
-        "ShowAbsence",
-        "ShowAbsencePercentage"
-      ]
+      "Module": "Absence",
+      "Rights": ["ShowAbsence", "ShowAbsencePercentage"],
     },
     {
-      "Module":"Events",
-      "Rights":[
-        "ShowEvents"
-      ]
+      "Module": "Events",
+      "Rights": ["ShowEvents"],
     },
     {
-      "Module":"Marks",
-      "Rights":[
-        "ShowMarks",
-        "ShowFinalMarks",
-        "PredictMarks"
-      ]
+      "Module": "Marks",
+      "Rights": ["ShowMarks", "ShowFinalMarks", "PredictMarks"],
     },
     {
-      "Module":"Timetable",
-      "Rights":[
-        "ShowTimetable"
-      ]
+      "Module": "Timetable",
+      "Rights": ["ShowTimetable"],
     },
     {
-      "Module":"Substitutions",
-      "Rights":[
-        "ShowSubstitutions"
-      ]
+      "Module": "Substitutions",
+      "Rights": ["ShowSubstitutions"],
     },
     {
-      "Module":"Subjects",
-      "Rights":[
-        "ShowSubjects",
-        "ShowSubjectThemes"
-      ]
+      "Module": "Subjects",
+      "Rights": ["ShowSubjects", "ShowSubjectThemes"],
     },
     {
-      "Module":"Homeworks",
-      "Rights":[
-        "ShowHomeworks"
-      ]
+      "Module": "Homeworks",
+      "Rights": ["ShowHomeworks"],
     },
     {
-      "Module":"Gdpr",
-      "Rights":[
-        "ShowOwnConsents",
-        "ShowChildConsents",
-        "ShowCommissioners"
-      ]
+      "Module": "Gdpr",
+      "Rights": ["ShowOwnConsents", "ShowChildConsents", "ShowCommissioners"],
     },
     {
-      "Module":"Campaign",
-      "Rights":[
-        "ShowCampaign"
-      ]
-    }
+      "Module": "Campaign",
+      "Rights": ["ShowCampaign"],
+    },
   ],
-  "SettingModules":{
-    "Common":{
-      "$type":"CommonModuleSettings",
-      "ActualSemester":{
-        "SemesterId":"2",
-        "From":"2020-01-04T00:00:00+01:00",
-        "To":"2020-07-14T23:59:59+02:00"
-      }
-    }
-  }
+  "SettingModules": {
+    "Common": {
+      "$type": "CommonModuleSettings",
+      "ActualSemester": {
+        "SemesterId": "2",
+        "From": "2020-01-04T00:00:00+01:00",
+        "To": "2020-07-14T23:59:59+02:00",
+      },
+    },
+  },
 }
 ```
+
 </details>
 
 ### Význam `CampaignCategoryCode`
@@ -125,15 +102,14 @@ Po base64 dekódování dostaneme tuto strukturu:
 
 ```jsonc
 {
-  "sid":"1234", // první část UserUID
-  "ut":69,
-  "sy":1        // study year
+  "sid": "1234", // první část UserUID
+  "ut": 69,
+  "sy": 1, // study year
 }
 ```
 
 Study year se může na mobilu a na webu lišit, [viz
 #23](https://github.com/bakalari-api/bakalari-api-v3/issues/23).
-
 
 ### Chyby
 
@@ -144,7 +120,7 @@ Study year se může na mobilu a na webu lišit, [viz
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 #### Neplatná metoda
@@ -154,8 +130,7 @@ Study year se může na mobilu a na webu lišit, [viz
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
 
 (Je možné, že o velkých prázdninách nebude vracet pololetí a možná ani moduly…)
-

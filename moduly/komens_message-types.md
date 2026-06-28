@@ -39,9 +39,9 @@ Authorization: Bearer ACCESS_TOKEN
               "IsDefault": false,
               "Abbreviation": "",
               "DisplayName": "Jan Novák Ing.",
-              "Name": "Jan Novák Ing."
-            }
-          ]
+              "Name": "Jan Novák Ing.",
+            },
+          ],
         },
         {
           "Code": "UV",
@@ -50,11 +50,11 @@ Authorization: Bearer ACCESS_TOKEN
           "ShowCopyForDirector": false,
           "ShowCopyForParent": false,
           "TypeOfSelection": "ZERO",
-          "Recipients": []
-        }
+          "Recipients": [],
+        },
       ],
       "SuperType": "Message",
-      "ShowConfirmation": true
+      "ShowConfirmation": true,
     },
     {
       "Abbreviation": "OMLUVENKA",
@@ -75,23 +75,23 @@ Authorization: Bearer ACCESS_TOKEN
               "IsDefault": true,
               "Abbreviation": "",
               "DisplayName": "Jan Novák Ing.",
-              "Name": "Jan Novák Ing."
-            }
-          ]
-        }
+              "Name": "Jan Novák Ing.",
+            },
+          ],
+        },
       ],
       "SuperType": "Message",
-      "ShowConfirmation": false
-    }
+      "ShowConfirmation": false,
+    },
   ],
   "Recipients": [
     {
       "Name": "Jan Novák Ing.",
       "Abbreviation": "",
       "Code": "AABBC",
-      "DisplayName": "Jan Novák Ing."
-    }
-  ]
+      "DisplayName": "Jan Novák Ing.",
+    },
+  ],
 }
 ```
 
@@ -104,7 +104,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -114,5 +114,5 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```

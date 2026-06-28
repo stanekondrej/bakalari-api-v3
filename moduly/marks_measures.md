@@ -15,14 +15,14 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```jsonc
 {
-  "PedagogicalMeasures":[
+  "PedagogicalMeasures": [
     {
-      "SchoolYear":"2018/19",
-      "Semester":"2",
-      "TypeLabel":"důtka třídního učitele",
-      "Date":"2019-02-18T00:00:00+01:00",
-      "TypeId":"dTU",
-      "Text":"Důtka tř&#237;dn&#237;ho učitele za nevhodn&#233; chov&#225;n&#237; během vyučov&#225;n&#237;"
+      "SchoolYear": "2018/19",
+      "Semester": "2",
+      "TypeLabel": "důtka třídního učitele",
+      "Date": "2019-02-18T00:00:00+01:00",
+      "TypeId": "dTU",
+      "Text": "Důtka tř&#237;dn&#237;ho učitele za nevhodn&#233; chov&#225;n&#237; během vyučov&#225;n&#237;",
     },
     {
       "SchoolYear": "2017/18",
@@ -30,9 +30,9 @@ Authorization: Bearer ACCESS_TOKEN
       "TypeLabel": "pochvala třídního učitele",
       "Date": "2018-04-16T00:00:00+02:00",
       "TypeId": "pTU",
-      "Text": "za &#250;čast v olympi&#225;d&#225;ch z odborn&#253;ch předmětů"
-    }
-  ]
+      "Text": "za &#250;čast v olympi&#225;d&#225;ch z odborn&#253;ch předmětů",
+    },
+  ],
 }
 ```
 
@@ -42,10 +42,10 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```http
 401 Unauthorized
-````
+```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -53,7 +53,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```http
 405 Method Not Allowed
 ```
-```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
-```
 
+```jsonc
+{ "Message": "The requested resource does not support http method 'POST'." }
+```

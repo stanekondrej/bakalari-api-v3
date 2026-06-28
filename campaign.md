@@ -8,9 +8,9 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 ```
 
 - `Location` odpovídá platformě a umístění (`mobileapp`, `LargeBanner`
-   nebo `SmallBannersPanel`),
+  nebo `SmallBannersPanel`),
 - `CampaignCategoryCode` je hodnota vracená pomocí [user](moduly/user.md)
-   modulu.
+  modulu.
 
 ## Odpověď
 
@@ -21,9 +21,9 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
       "messageId": 1049,
       "imageUrl": "https://www.bakalari.cz/images/kampane/NadaceAlbatros-TalentifyMe-Rodic-340x330.jpg",
       "linkUrl": "https://www.talentify.me/cs-cz",
-      "priority": 50
-    }
-  ]
+      "priority": 50,
+    },
+  ],
 }
 ```
 
@@ -33,11 +33,10 @@ GET https://campaign.bakalari.cz/bannerinfo/$Location/$CampaignCategoryCode
 
 ```jsonc
 {
-  "type":"https://tools.ietf.org/html/rfc7231#section-6.6.1",
-  "title":"An error occured while processing your request.",
-  "status":500,
-  "detail":"Invalid category",
-  "traceId":"00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxx-00"
+  "type": "https://tools.ietf.org/html/rfc7231#section-6.6.1",
+  "title": "An error occured while processing your request.",
+  "status": 500,
+  "detail": "Invalid category",
+  "traceId": "00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxx-00",
 }
 ```
-

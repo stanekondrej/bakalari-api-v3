@@ -14,9 +14,9 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```jsonc
 {
-    "StudentNameWithClass": "Novák Jan (1.A)",
-    "Balance": 1000.00,
-    "Spent": -5052.97
+  "StudentNameWithClass": "Novák Jan (1.A)",
+  "Balance": 1000.0,
+  "Spent": -5052.97,
 }
 ```
 
@@ -49,14 +49,14 @@ standartně pomocí URL kódování.
         {
           "Description": "Kino 1.A",
           "Date": "2024-09-04T00:00:00+02:00",
-          "Amount": -40
+          "Amount": -40,
         },
         {
           "Description": "Příjem z banky (Jana Nováková)",
           "Date": "2024-09-02T00:00:00+02:00",
-          "Amount": 200
-        }
-      ]
+          "Amount": 200,
+        },
+      ],
     },
     {
       "Date": "2024-08-01T00:00:00+02:00",
@@ -65,16 +65,16 @@ standartně pomocí URL kódování.
         {
           "Description": "Pracovní sešit Chemie 1",
           "Date": "2024-08-29T00:00:00+02:00",
-          "Amount": -400
+          "Amount": -400,
         },
         {
           "Description": "Příjem z banky (Jan Novák)",
           "Date": "2024-08-01T00:00:00+02:00",
-          "Amount": 350
-        }
-      ]
-    }
-  ]
+          "Amount": 350,
+        },
+      ],
+    },
+  ],
 }
 ```
 
@@ -97,12 +97,12 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```jsonc
 {
-    "Instructions": "Pro platbu do třídního fondu použijte níže uvedený bankovní účet, specifický a variabilní symbol.",
-    "BankAccount": "76327632/0300",
-    "VariableSymbol": 123456789,
-    "SpecificSymbol": 1111,
-    "Amount": 0,
-    "Message": "1.A  Novák Jan třídní fond"
+  "Instructions": "Pro platbu do třídního fondu použijte níže uvedený bankovní účet, specifický a variabilní symbol.",
+  "BankAccount": "76327632/0300",
+  "VariableSymbol": 123456789,
+  "SpecificSymbol": 1111,
+  "Amount": 0,
+  "Message": "1.A  Novák Jan třídní fond",
 }
 ```
 
@@ -115,7 +115,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -125,7 +125,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
 
 ### Prázdný parametr `search`
@@ -141,11 +141,8 @@ Authorization: Bearer ACCESS_TOKEN
     "$type": "HttpError",
     "search.String": {
       "$type": "String[]",
-      "$values": [
-        "A value is required but was not present in the request."
-      ]
-    }
-  }
+      "$values": ["A value is required but was not present in the request."],
+    },
+  },
 }
 ```
-

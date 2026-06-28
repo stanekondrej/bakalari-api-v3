@@ -24,9 +24,9 @@ Informace o pověřenci pro ochranu osobních údajů
       "Phone": "",
       "Email": "gdpr@gdpr.gdpr",
       "Web": "gdpr.com",
-      "DataBox": ""
-    }
-  ]
+      "DataBox": "",
+    },
+  ],
 }
 ```
 
@@ -49,6 +49,5 @@ Informace o pověřenci pro ochranu osobních údajů
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
-

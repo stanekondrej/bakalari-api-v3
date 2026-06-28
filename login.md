@@ -13,20 +13,20 @@ Content-Type: application/x-www-form-urlencoded
 
 Body: `client_id=ANDR&grant_type=password&username=USERNAME&password=PASSWORD`
 
-Výsledek requestu: *(Počty znaků jsou pouze orientační, aby někdo nebyl zaskočen
-jejich délkou, která se od starších verzí API rapidně změnila)*
+Výsledek requestu: _(Počty znaků jsou pouze orientační, aby někdo nebyl zaskočen
+jejich délkou, která se od starších verzí API rapidně změnila)_
 
 ```jsonc
 {
-   "bak:ApiVersion":"3.13.0",
-   "bak:AppVersion":"1.35.1029.1",
-   "bak:UserId":"XXXXX",
-   "access_token":"ACCESSTOKEN - 2556 znaků",
-   "refresh_token":"REFRESHTOKEN - 3459 znaků",
-   "id_token":"id_token - 872 znaků", // není vždy dostupné
-   "token_type":"Bearer",
-   "expires_in":3599,
-   "scope":"openid profile offline_access bakalari_api"
+  "bak:ApiVersion": "3.13.0",
+  "bak:AppVersion": "1.35.1029.1",
+  "bak:UserId": "XXXXX",
+  "access_token": "ACCESSTOKEN - 2556 znaků",
+  "refresh_token": "REFRESHTOKEN - 3459 znaků",
+  "id_token": "id_token - 872 znaků", // není vždy dostupné
+  "token_type": "Bearer",
+  "expires_in": 3599,
+  "scope": "openid profile offline_access bakalari_api",
 }
 ```
 
@@ -40,7 +40,7 @@ Pro starší verze API vypadá odpověď následovně:
   "refresh_token": "REFRESHTOKEN",
   "bak:ApiVersion": "3.8.0",
   "bak:AppVersion": "1.28.306.4",
-  "bak:UserId": "XXXXX"
+  "bak:UserId": "XXXXX",
 }
 ```
 
@@ -67,10 +67,10 @@ Po dekódování z base64 vypadají jednotlivé části takto:
 
 ```jsonc
 {
-  "alg":"RSA-OAEP",
-  "enc":"A256CBC-HS512",
-  "kid":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  "typ":"at+jwt"
+  "alg": "RSA-OAEP",
+  "enc": "A256CBC-HS512",
+  "kid": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "typ": "at+jwt",
 }
 ```
 
@@ -78,10 +78,10 @@ Po dekódování z base64 vypadají jednotlivé části takto:
 
 ```jsonc
 {
-   "alg":"RSA-OAEP",
-   "enc":"A256CBC-HS512",
-   "kid":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-   "typ":"oi_reft+jwt"
+  "alg": "RSA-OAEP",
+  "enc": "A256CBC-HS512",
+  "kid": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "typ": "oi_reft+jwt",
 }
 ```
 
@@ -98,7 +98,7 @@ Po dekódování z base64 vypadají jednotlivé části takto:
   "aud": "ANDR",
   "exp": 1601454600, //platný 30 minut
   "iss": "https://bakalari.skola.cz/",
-  "iat": 1601452800
+  "iat": 1601452800,
 }
 ```
 
@@ -110,7 +110,8 @@ Vždy odpovídá s `400 Bad Request`
 
 ```jsonc
 {
-  "error":"invalid_grant","error_description":"Špatný login nebo heslo"
+  "error": "invalid_grant",
+  "error_description": "Špatný login nebo heslo",
 }
 ```
 
@@ -118,8 +119,8 @@ Vždy odpovídá s `400 Bad Request`
 
 ```jsonc
 {
-  "error":"invalid_grant",
-  "error_description":"The specified token is invalid."
+  "error": "invalid_grant",
+  "error_description": "The specified token is invalid.",
 }
 ```
 
@@ -127,25 +128,25 @@ Vždy odpovídá s `400 Bad Request`
 
 ```jsonc
 {
-  "error":"invalid_grant",
-  "error_description":"The specified refresh token has already been redeemed."
+  "error": "invalid_grant",
+  "error_description": "The specified refresh token has already been redeemed.",
 }
 ```
 
-*Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden
+_Aktuální verze API má v sobě chybu (pokud to tedy není funkce), že jeden
 refresh token jde použít vícekrát pro získání rozdílných validních párů tokenů.
 Tato chybová odpověď se začne objevovat až po čtvrtém requestu se stejným
 tokenem. Tzn. jdou vygenerovat až 3 access tokeny a 3 refresh tokeny z jednoho
 refresh tokenu. K této duplikaci tokenů by ale běžně nemělo docházet, a proto ji
 prosím nepoužívejte (+není 100% zdokumentovaná) a uchovávejte vždy poslední pár
-tokenů*
-
+tokenů_
 
 ### Chybějící grant type
 
 ```jsonc
 {
-  "error":"invalid_request","error_description":"The mandatory 'grant_type' parameter is missing."
+  "error": "invalid_request",
+  "error_description": "The mandatory 'grant_type' parameter is missing.",
 }
 ```
 
@@ -153,8 +154,8 @@ tokenů*
 
 ```jsonc
 {
-  "error":"invalid_client",
-  "error_description":"The mandatory 'client_id' parameter is missing."
+  "error": "invalid_client",
+  "error_description": "The mandatory 'client_id' parameter is missing.",
 }
 ```
 
@@ -163,7 +164,6 @@ tokenů*
 ```jsonc
 {
   "error": "invalid_client",
-  "error_description": "Unknown Client or invalid grant type."
+  "error_description": "Unknown Client or invalid grant type.",
 }
 ```
-

@@ -22,26 +22,26 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```jsonc
 {
-   "WebModules":[
-      {
-         "IconId":"dokumenty",
-         "SubMenu":null,
-         "Url":"next/dokumentyPrehled.aspx",
-         "Name":"Dokumenty"
-      },
-      {
-         "IconId":"vyukoveZdroje",
-         "SubMenu":null,
-         "Url":"next/TeachingResources.aspx",
-         "Name":"Výukové zdroje"
-      }    
-   ],
-   "Dashboard":{
-      "IconId":null,
-      "SubMenu":null,
-      "Url":"next/dash.aspx",
-      "Name":null
-   }
+  "WebModules": [
+    {
+      "IconId": "dokumenty",
+      "SubMenu": null,
+      "Url": "next/dokumentyPrehled.aspx",
+      "Name": "Dokumenty",
+    },
+    {
+      "IconId": "vyukoveZdroje",
+      "SubMenu": null,
+      "Url": "next/TeachingResources.aspx",
+      "Name": "Výukové zdroje",
+    },
+  ],
+  "Dashboard": {
+    "IconId": null,
+    "SubMenu": null,
+    "Url": "next/dash.aspx",
+    "Name": null,
+  },
 }
 ```
 
@@ -71,6 +71,7 @@ Jednorázový token pro autorizaci na webu bakalářů; login token.
 
 <!-- TODO: tohle mi přijde redundantní. Možná odebrat?
 -->
+
 ### Přihlášení
 
 #### Požadavek
@@ -104,7 +105,7 @@ Location: /login?ReturnUrl=next/dash.aspx
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ##### Neplatná metoda
@@ -114,6 +115,5 @@ Location: /login?ReturnUrl=next/dash.aspx
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
-

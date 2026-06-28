@@ -141,7 +141,7 @@ použitím `Canceled` parametru.
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -151,7 +151,7 @@ použitím `Canceled` parametru.
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
 
 ### Neplatné datum
@@ -162,16 +162,13 @@ použitím `Canceled` parametru.
 
 ```jsonc
 {
-  "Message":"The request is invalid.",
-  "ModelState":{
-    "$type":"HttpError",
-    "date":{
-      "$type":"String[]",
-      "$values":[
-        "The value 'CHYBNÝ_ŘETĚZEC' is not valid for Nullable`1."
-      ]
-    }
-  }
+  "Message": "The request is invalid.",
+  "ModelState": {
+    "$type": "HttpError",
+    "date": {
+      "$type": "String[]",
+      "$values": ["The value 'CHYBNÝ_ŘETĚZEC' is not valid for Nullable`1."],
+    },
+  },
 }
 ```
-

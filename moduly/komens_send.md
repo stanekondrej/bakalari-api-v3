@@ -21,9 +21,7 @@ Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit zpr
   "Title": "Nadpis",
   "Text": "Text zprávy",
   "RecipientType": "U",
-  "Recipients": [
-    "AABBC"
-  ],
+  "Recipients": ["AABBC"],
   "Lifetime": null,
   "DateFrom": null,
   "DateTo": null,
@@ -36,15 +34,15 @@ Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit zpr
   "TypeOfRatingId": null,
   "Scale": null,
   "Attachments": [],
-  "DraftDate": null
+  "DraftDate": null,
 }
 ```
 
 ### Odpověď
 
-``` jsonc
+```jsonc
 {
-  "Message": ""
+  "Message": "",
 }
 ```
 
@@ -57,7 +55,7 @@ Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit zpr
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -67,6 +65,5 @@ Parametry pod atributem `Recipients` jsou nepovinné, ale dokáží ovlivnit zpr
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'GET'."}
+{ "Message": "The requested resource does not support http method 'GET'." }
 ```
-

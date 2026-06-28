@@ -19,7 +19,7 @@ endpoint vrací i přílohy z domácích úkolů.
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -29,7 +29,7 @@ endpoint vrací i přílohy z domácích úkolů.
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
 
 ### Neplatné ID přílohy
@@ -39,7 +39,7 @@ endpoint vrací i přílohy z domácích úkolů.
 ```
 
 ```jsonc
-{"Message":"An error has occurred."}
+{ "Message": "An error has occurred." }
 ```
 
 ## Odpověď

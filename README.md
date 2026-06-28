@@ -3,7 +3,7 @@
 Analýza třetí verze API školního systému Bakaláři.
 
 Toto rozhraní (tedy API) primárně slouží ke komunikaci mezi mobilní
-aplikací *Bakaláři OnLine* a servery jednotlivých škol.
+aplikací _Bakaláři OnLine_ a servery jednotlivých škol.
 
 ## URL
 
@@ -19,21 +19,21 @@ odpovídat `https://www.example.com:444`. Adresa modulu marks tedy bude
 ## Aplikace postavené na Bakaláři API verze 3
 
 - Průměr Známek – aplikace pro výpočet váženého průměru s možností
-   předvídání známek (funkční offline): [Průměr Známek na Google
-   Play](https://play.google.com/store/apps/details?id=cz.fely.weightedaverage)
+  předvídání známek (funkční offline): [Průměr Známek na Google
+  Play](https://play.google.com/store/apps/details?id=cz.fely.weightedaverage)
 - Lepší Rozvrh – rychlejší klient pro rozvrh (funguje i offline). [Google
-   Play](https://play.google.com/store/apps/details?id=cz.vitskalicky.lepsirozvrh&utm_source=bakalari-api),
-   [GitLab](https://gitlab.com/vitSkalicky/lepsi-rozvrh/)
+  Play](https://play.google.com/store/apps/details?id=cz.vitskalicky.lepsirozvrh&utm_source=bakalari-api),
+  [GitLab](https://gitlab.com/vitSkalicky/lepsi-rozvrh/)
 - Pain - další "lepší rozvrh", ale na míru jen pro pár škol:
-   [Web](https://pain.qery.cz), [GitHub](https://github.com/czQery/pain)
+  [Web](https://pain.qery.cz), [GitHub](https://github.com/czQery/pain)
 - Online token generator – jednoduchý generátor tokenů pro API v1 i v3:
-   https://ondrovywebovky.cz/token/
+  https://ondrovywebovky.cz/token/
 - Java wrapper pro API v3: https://github.com/PanJohnny/Baka4J
 - [Plochý rozvrh](https://github.com/Tomsanik/plochy-rozvrh) – snadno
-   dostupný, přehledný a aktuální rozvrh jako součást tapety plochy.
+  dostupný, přehledný a aktuální rozvrh jako součást tapety plochy.
 - Asynchronní API k Bakalářům
-   [async-bakalari-api3](https://github.com/schizza/async-bakalari-api3)
-   ([dokumentace](https://async-bakalari-api.schizza.cz))
+  [async-bakalari-api3](https://github.com/schizza/async-bakalari-api3)
+  ([dokumentace](https://async-bakalari-api.schizza.cz))
 
 ## Kam dál?
 

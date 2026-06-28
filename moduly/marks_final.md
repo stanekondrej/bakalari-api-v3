@@ -306,6 +306,7 @@ Authorization: Bearer ACCESS_TOKEN
   ]
 }
 ```
+
 </details>
 
 ## Chyby
@@ -317,7 +318,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -325,7 +326,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```http
 405 Method Not Allowed
 ```
-```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
-```
 
+```jsonc
+{ "Message": "The requested resource does not support http method 'POST'." }
+```

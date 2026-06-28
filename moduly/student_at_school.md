@@ -18,6 +18,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```jsonc
 false
 ```
+
 </details>
 
 ## Přístupový systém
@@ -32,11 +33,9 @@ systém](https://napoveda.bakalari.cz/index.html?wa_pristsys.htm)
   "EnabledModules": [
     {
       "Module": "AccessSystem",
-      "Rights": [
-        "CanShowStudentPresentAtSchool"
-      ]
-    }
-  ]
+      "Rights": ["CanShowStudentPresentAtSchool"],
+    },
+  ],
 }
 ```
 
@@ -47,8 +46,9 @@ systém](https://napoveda.bakalari.cz/index.html?wa_pristsys.htm)
 ```http
 401 Unauthorized
 ```
+
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -56,7 +56,7 @@ systém](https://napoveda.bakalari.cz/index.html?wa_pristsys.htm)
 ```http
 405 Method Not Allowed
 ```
-```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
-```
 
+```jsonc
+{ "Message": "The requested resource does not support http method 'POST'." }
+```

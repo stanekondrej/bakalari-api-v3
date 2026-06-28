@@ -17,17 +17,17 @@ prázdné `AbsencesPerSubject`
 {
   "PercentageThreshold": 0.18,
   "Absences": [
-     {
-       "Date": "2020-02-30T00:00:00+01:00",
-       "Unsolved": 0,
-       "Ok": 5,
-       "Missed": 0,
-       "Late": 0,
-       "Soon": 0,
-       "School": 0,
-       "DistanceTeaching": 0
-     }
-     /// ...
+    {
+      "Date": "2020-02-30T00:00:00+01:00",
+      "Unsolved": 0,
+      "Ok": 5,
+      "Missed": 0,
+      "Late": 0,
+      "Soon": 0,
+      "School": 0,
+      "DistanceTeaching": 0,
+    },
+    /// ...
   ],
   "AbsencesPerSubject": [
     {
@@ -37,10 +37,10 @@ prázdné `AbsencesPerSubject`
       "Late": 0,
       "Soon": 0,
       "School": 0,
-      "DistanceTeaching": 0
-    }
+      "DistanceTeaching": 0,
+    },
     // ...
-  ]
+  ],
 }
 ```
 
@@ -53,7 +53,7 @@ prázdné `AbsencesPerSubject`
 ```
 
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Chybná metoda
@@ -63,6 +63,5 @@ prázdné `AbsencesPerSubject`
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
-

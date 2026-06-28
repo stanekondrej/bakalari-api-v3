@@ -11,7 +11,13 @@ GET /api
 ### Odpověď
 
 ```jsonc
-[{"ApiVersion":"3.12.0","ApplicationVersion":"1.32.625.2","BaseUrl":"api/3"}]
+[
+  {
+    "ApiVersion": "3.12.0",
+    "ApplicationVersion": "1.32.625.2",
+    "BaseUrl": "api/3",
+  },
+]
 ```
 
 ## Informace o API
@@ -25,7 +31,11 @@ GET /api/3
 ### Odpověď
 
 ```jsonc
-{"ApiVersion":"3.12.0","ApplicationVersion":"1.32.625.2","BaseUrl":"api/3"}
+{
+  "ApiVersion": "3.12.0",
+  "ApplicationVersion": "1.32.625.2",
+  "BaseUrl": "api/3",
+}
 ```
 
 ## Chyby
@@ -37,5 +47,5 @@ GET /api/3
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```

@@ -30,8 +30,9 @@ zřejmě bude nenulová pouze před zobrazením push notifikace.
 ```http
 401 Unauthorized
 ```
+
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 #### Neplatná metoda
@@ -41,6 +42,5 @@ zřejmě bude nenulová pouze před zobrazením push notifikace.
 ```
 
 ```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
+{ "Message": "The requested resource does not support http method 'POST'." }
 ```
-

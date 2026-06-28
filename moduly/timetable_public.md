@@ -40,32 +40,32 @@ import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
 fetch("https://truhla.bakalari.cz/Timetable/Public/Next/Room/G0")
-.then((res) => res.text())
-.then((html) => {
+  .then((res) => res.text())
+  .then((html) => {
     const $ = cheerio.load(html);
     var classes = [];
-    $('#selectedClass option').each((i, el) => {
-        if (i >= 1) {
-            classes.push($(el).val());
-        }
+    $("#selectedClass option").each((i, el) => {
+      if (i >= 1) {
+        classes.push($(el).val());
+      }
     });
     console.log("Classes:");
     console.log(classes);
 
     var teachers = [];
-    $('#selectedTeacher option').each((i, el) => {
-        if (i >= 1) {
-            teachers.push($(el).val());
-        }
+    $("#selectedTeacher option").each((i, el) => {
+      if (i >= 1) {
+        teachers.push($(el).val());
+      }
     });
     console.log("Teachers:");
     console.log(teachers);
 
     var rooms = [];
-    $('#selectedRoom option').each((i, el) => {
-        if (i >= 1) {
-            rooms.push($(el).val(), $(el).text);
-        }
+    $("#selectedRoom option").each((i, el) => {
+      if (i >= 1) {
+        rooms.push($(el).val(), $(el).text);
+      }
     });
     console.log("Rooms:");
     console.log(rooms);
@@ -77,47 +77,55 @@ fetch("https://truhla.bakalari.cz/Timetable/Public/Next/Room/G0")
     //  .bk-timetable-cell -> max 10 school classes -> 10 cells
     //   If the cell is empty, skip it, else
     //      .day-item-hover -> get data-detail attribute -> it contains json -> parse it -> i need subjecttext (convert escaped chars like &#256 into normal ones), teacher, room and changeinfo
-    
+
     var timetable = [];
-    $('.bk-timetable-row').each((i, el) => {
-        var day = {};
-        day.day = $(el).find('.bk-timetable-day .bk-day-day').text().trim();
-        day.date = $(el).find('.bk-timetable-day .bk-day-date').text().trim();
-        day.classes = [];
-        $(el).find('.bk-timetable-cell').each((j, cell) => {
-            var detail = $(cell).find('.day-item-hover').attr('data-detail');
-            if (detail) {
-                var detailJson = JSON.parse(detail);
-                day.classes.push({
-                    subject: detailJson.subjecttext.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec)),
-                    teacher: detailJson.teacher,
-                    room: detailJson.room,
-                    changeInfo: detailJson.changeinfo
-                });
-            }
+    $(".bk-timetable-row").each((i, el) => {
+      var day = {};
+      day.day = $(el).find(".bk-timetable-day .bk-day-day").text().trim();
+      day.date = $(el).find(".bk-timetable-day .bk-day-date").text().trim();
+      day.classes = [];
+      $(el)
+        .find(".bk-timetable-cell")
+        .each((j, cell) => {
+          var detail = $(cell).find(".day-item-hover").attr("data-detail");
+          if (detail) {
+            var detailJson = JSON.parse(detail);
+            day.classes.push({
+              subject: detailJson.subjecttext.replace(
+                /&#(\d+);/g,
+                (match, dec) => String.fromCharCode(dec),
+              ),
+              teacher: detailJson.teacher,
+              room: detailJson.room,
+              changeInfo: detailJson.changeinfo,
+            });
+          }
         });
-        timetable.push(day);
+      timetable.push(day);
     });
     console.log("Timetable:");
     console.log(timetable);
 
     //Display classes in a readable format
     timetable.forEach((day) => {
-        console.log(`${day.day} (${day.date}):`);
-        day.classes.forEach((cls) => {
-            console.log(` - ${cls.subject} | Teacher: ${cls.teacher} | Room: ${cls.room} | Change Info: ${cls.changeInfo}`);
-        });
+      console.log(`${day.day} (${day.date}):`);
+      day.classes.forEach((cls) => {
+        console.log(
+          ` - ${cls.subject} | Teacher: ${cls.teacher} | Room: ${cls.room} | Change Info: ${cls.changeInfo}`,
+        );
+      });
     });
-});
+  });
 ```
 
 V `package.json` pak musí být políčko `type` s hodnotou `module`.
 
 ```json
 {
-    "type": "module"
+  "type": "module"
 }
 ```
+
 </details>
 
 <details>
@@ -161,13 +169,13 @@ class Subject
 {
     [JsonPropertyName("subjecttext")]
     public string subject {get; set;}
-        
+
     [JsonPropertyName("teacher")]
     public string teacher {get; set;}
-        
+
     [JsonPropertyName("room")]
     public string room {get; set;}
-        
+
     [JsonPropertyName("changeinfo")]
     public string changeInfo {get; set;}
 }
@@ -199,19 +207,19 @@ class Parser
                         Console.WriteLine($"{value} - {WebUtility.HtmlDecode(text)}");
                     }
                 }
-            }    
+            }
             Console.WriteLine();
         }
 
         PrintSelectMenu("Classes", "selectedClass");
         PrintSelectMenu("Teachers", "selectedTeacher");
         PrintSelectMenu("Rooms", "selectedRoom");
-        
+
         Console.WriteLine();
-        
-        
+
+
         var timetable = new Timetable();
-        
+
         var selectNode = htmlDoc.DocumentNode.SelectNodes("//div[contains(@class,'bk-timetable-row')]");
         if (selectNode.Count > 0)
         {
@@ -236,12 +244,12 @@ class Parser
                             {
                                 detail = WebUtility.HtmlDecode(detail);
                                 var subject = JsonSerializer.Deserialize<Subject>(detail);
-                                day.AddSubject(subject!);       
+                                day.AddSubject(subject!);
                             }
                         }
                     }
                 }
-                
+
                 timetable.AddDay(day);
             }
         }
@@ -257,6 +265,7 @@ class Parser
     }
 }
 ```
+
 </details>
 
 <details>
@@ -367,5 +376,5 @@ if __name__ == "__main__":
     main()
 
 ```
-</details>
 
+</details>

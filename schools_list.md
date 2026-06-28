@@ -18,15 +18,15 @@ Accept: application/json
 [
   {
     "name": "",
-    "schoolCount": 2
+    "schoolCount": 2,
   },
   {
     "name": "Albrechtice",
-    "schoolCount": 1
+    "schoolCount": 1,
   },
   {
     "name": "Aš",
-    "schoolCount": 3
+    "schoolCount": 3,
   },
   // ...
 ]
@@ -65,8 +65,8 @@ Accept: application/json
 Parametr `mesto` musí být správně URL encoded, například Benešov u Prahy by byl
 `Bene%C5%A1ov%20u%20Prahy`
 
-U měst s tečkou ve jméně (*např.: Ostrava-Mar.Hory*) server vrací `404`,
-pro platnou odpověď je nutno použít pouze část před tečkou (*Ostrava-Mar*)
+U měst s tečkou ve jméně (_např.: Ostrava-Mar.Hory_) server vrací `404`,
+pro platnou odpověď je nutno použít pouze část před tečkou (_Ostrava-Mar_)
 
 ### Odpověď
 
@@ -77,20 +77,20 @@ pro platnou odpověď je nutno použít pouze část před tečkou (*Ostrava-Mar
     {
       "id": "SYHKTAAAAB",
       "name": "Mateřská škola Montessori Beroun a Základní škola s.r.o.",
-      "schoolUrl": "https://montessori-beroun.bakalari.cz"
+      "schoolUrl": "https://montessori-beroun.bakalari.cz",
     },
     {
       "id": "SYDATAAABA",
       "name": "Základní škola, Beroun - Závodí, Komenského 249",
-      "schoolUrl": "https://zavodi.bakalari.cz"
+      "schoolUrl": "https://zavodi.bakalari.cz",
     },
     {
       "id": "SYDATAADKO",
       "name": "Manažerská akademie, soukromá střední škola",
-      "schoolUrl": "https://maberoun.bakalari.cz/"
+      "schoolUrl": "https://maberoun.bakalari.cz/",
     },
     // ...
-  ]
+  ],
 }
 ```
 
@@ -118,6 +118,5 @@ Bez hlavičky `Accept: application/json` vrací stejná data, jen v XML struktu�
     </schoolInfo>
     <!-- ... -->
   </schools>
-</municipality> 
+</municipality>
 ```
-

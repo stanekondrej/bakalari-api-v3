@@ -14,22 +14,22 @@ Authorization: Bearer ACCESS_TOKEN
 
 ```jsonc
 {
- "Subjects":[
+  "Subjects": [
     {
-       "SubjectID":"28",
-       "SubjectName":"Český jazyk a literatura",
-       "SubjectAbbrev":"ČJL",
-       "TeacherID":"UZBNM",
-       "TeacherName":"Příjmení jméno",
-       "TeacherAbbrev":"Př",
-       "TeacherEmail":"email@skola.cz",
-       "TeacherWeb":"",
-       "TeacherSchoolPhone":null,
-       "TeacherHomePhone":null,
-       "TeacherMobilePhone":null
+      "SubjectID": "28",
+      "SubjectName": "Český jazyk a literatura",
+      "SubjectAbbrev": "ČJL",
+      "TeacherID": "UZBNM",
+      "TeacherName": "Příjmení jméno",
+      "TeacherAbbrev": "Př",
+      "TeacherEmail": "email@skola.cz",
+      "TeacherWeb": "",
+      "TeacherSchoolPhone": null,
+      "TeacherHomePhone": null,
+      "TeacherMobilePhone": null,
     },
     // ...
-  ]
+  ],
 }
 ```
 
@@ -40,8 +40,9 @@ Authorization: Bearer ACCESS_TOKEN
 ```http
 401 Unauthorized
 ```
+
 ```jsonc
-{"Message":"Authorization has been denied for this request."}
+{ "Message": "Authorization has been denied for this request." }
 ```
 
 ### Neplatná metoda
@@ -49,7 +50,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```http
 405 Method Not Allowed
 ```
-```jsonc
-{"Message":"The requested resource does not support http method 'POST'."}
-```
 
+```jsonc
+{ "Message": "The requested resource does not support http method 'POST'." }
+```
